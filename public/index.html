@@ -3,1509 +3,1917 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arbitrum DAO Season 3 Grant Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <title>Arbitrum DAO Grants Dashboard</title>
+    
+    <!-- CDN Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/dark.min.css">
+    
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            background: #0d1117;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e14 0%, #0d1117 100%);
             color: #e6edf3;
-            line-height: 1.5;
-            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
         }
-
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
         }
-
+        
+        /* Header */
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #30363d;
+            margin-bottom: 48px;
+            padding: 32px 24px;
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
         }
-
+        
         h1 {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8b949e;
             margin-bottom: 8px;
         }
-
+        
         .last-updated {
-            color: #8b949e;
             font-size: 0.9rem;
+            color: #6e7681;
+            margin-top: 12px;
         }
-
-        .reporting-period {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 24px;
+        
+        /* Reporting Period Section */
+        .reporting-period-section {
+            margin-bottom: 32px;
         }
-
-        .reporting-period h2 {
-            font-size: 1.3rem;
-            margin-bottom: 16px;
-            color: #28a0f0;
-        }
-
-        .date-picker-row {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .date-picker-row label {
-            font-weight: 600;
-            margin-right: 8px;
-        }
-
-        .date-picker-row input[type="date"] {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 8px 12px;
-            color: #e6edf3;
-            font-size: 0.95rem;
-        }
-
-        .period-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .period-summary .stat-card {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 12px;
-        }
-
-        .period-summary .stat-card .label {
-            font-size: 0.85rem;
-            color: #8b949e;
-            margin-bottom: 4px;
-        }
-
-        .period-summary .stat-card .value {
-            font-size: 1.5rem;
-            font-weight: 600;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-        }
-
-        .sankey-container {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 24px;
-        }
-
-        .sankey-container h3 {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-            color: #28a0f0;
-        }
-
-        #sankeyDiagram {
-            width: 100%;
-            height: 400px;
-        }
-
-        .panels-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .panel {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
-        }
-
-        .panel h3 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: #28a0f0;
-        }
-
-        .panel-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .panel-stat {
+        
+        .reporting-period-toggle {
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            padding: 20px 24px;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #30363d;
+            transition: all 0.2s ease;
         }
-
-        .panel-stat:last-child {
-            border-bottom: none;
+        
+        .reporting-period-toggle:hover {
+            background: #161b22;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
         }
-
-        .panel-stat .label {
+        
+        .reporting-period-toggle h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e6edf3;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+        
+        .reporting-period-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .reporting-period-content.expanded {
+            max-height: 2000px;
+        }
+        
+        .reporting-period-inner {
+            padding: 24px;
+            background: #0d1117;
+            border: 1px solid #1e2833;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .date-picker-container {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .date-picker-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .date-picker-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
             color: #8b949e;
         }
-
-        .panel-stat .value {
-            font-weight: 600;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        
+        .date-picker-group input {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e6edf3;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            width: 200px;
+            transition: all 0.2s ease;
         }
-
-        .domain-cards {
+        
+        .date-picker-group input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+        
+        .clear-period-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+        
+        .clear-period-btn:hover {
+            background: #30363d;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .sankey-container {
+            margin: 24px 0;
+            padding: 24px;
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+        }
+        
+        .sankey-container h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #e6edf3;
+        }
+        
+        #sankeyChart {
+            width: 100%;
+            height: 400px;
+        }
+        
+        .period-panels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .period-panel {
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .period-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        
+        .period-panel h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #8b949e;
+        }
+        
+        .period-panel .count {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #58a6ff;
+            margin-bottom: 8px;
+        }
+        
+        .period-panel .label {
+            font-size: 0.9rem;
+            color: #6e7681;
+        }
+        
+        /* Domain Cards */
+        .domain-overview {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
-
+        
         .domain-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 16px;
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-top: 4px solid;
+            border-radius: 12px;
+            padding: 20px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            position: relative;
         }
-
+        
         .domain-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
-
+        
         .domain-card.active {
-            border-color: #28a0f0;
-            box-shadow: 0 0 0 1px #28a0f0;
+            box-shadow: 0 0 0 2px #58a6ff, 0 8px 24px rgba(88, 166, 255, 0.3);
         }
-
-        .domain-card .domain-name {
+        
+        .domain-card.all { border-top-color: #8b949e; }
+        .domain-card.npi { border-top-color: #58a6ff; }
+        .domain-card.devtooling { border-top-color: #56d364; }
+        .domain-card.events { border-top-color: #f778ba; }
+        .domain-card.gaming { border-top-color: #d29922; }
+        .domain-card.orbit { border-top-color: #a371f7; }
+        
+        .domain-card h3 {
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 8px;
+            color: #e6edf3;
         }
-
-        .domain-card .domain-count {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            margin-bottom: 4px;
-        }
-
-        .domain-card .domain-label {
-            font-size: 0.85rem;
-            color: #8b949e;
-        }
-
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
-        }
-
-        .stat-card .label {
-            font-size: 0.9rem;
-            color: #8b949e;
-            margin-bottom: 8px;
-        }
-
-        .stat-card .value {
+        
+        .domain-card .count {
             font-size: 2rem;
             font-weight: 700;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            margin-bottom: 4px;
+            color: #e6edf3;
         }
-
+        
+        .domain-card .subtext {
+            font-size: 0.85rem;
+            color: #6e7681;
+        }
+        
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        
+        .stat-card.highlight {
+            background: linear-gradient(135deg, rgba(86, 211, 100, 0.05) 0%, rgba(86, 211, 100, 0.02) 100%);
+        }
+        
+        .stat-card h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #8b949e;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e6edf3;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .subvalue {
+            font-size: 0.9rem;
+            color: #6e7681;
+        }
+        
+        /* Charts Row */
         .charts-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
         }
-
+        
         .chart-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            padding: 24px;
         }
-
+        
         .chart-card h3 {
             font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 16px;
-            color: #28a0f0;
+            color: #e6edf3;
         }
-
-        .filter-bar {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 20px;
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        /* Filters */
+        .filters {
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            padding: 24px;
             margin-bottom: 24px;
         }
-
-        .search-box {
-            width: 100%;
-            padding: 10px 12px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
-            font-size: 1rem;
-            margin-bottom: 16px;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #28a0f0;
-        }
-
-        .state-buttons {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .state-btn {
-            padding: 8px 16px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .state-btn:hover {
-            background: #161b22;
-        }
-
-        .state-btn.active {
-            border-color: #28a0f0;
-            background: rgba(40, 160, 240, 0.1);
-        }
-
-        .advanced-filters {
+        
+        .filter-row {
             display: flex;
             gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
             flex-wrap: wrap;
+        }
+        
+        .filter-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e6edf3;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+        
+        .search-box input::placeholder {
+            color: #6e7681;
+        }
+        
+        .state-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .state-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .state-btn:hover {
+            background: #30363d;
+        }
+        
+        .state-btn.active {
+            background: #58a6ff;
+            border-color: #58a6ff;
+            color: #0d1117;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .filter-group label {
+            font-size: 0.85rem;
+            color: #8b949e;
+            font-weight: 500;
+        }
+        
+        .filter-group select,
+        .filter-group input[type="number"] {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #e6edf3;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+        
+        .filter-group select:focus,
+        .filter-group input[type="number"]:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+        
+        .funding-range {
+            display: flex;
+            gap: 8px;
             align-items: center;
         }
-
-        .filter-group {
+        
+        .funding-range input {
+            width: 120px;
+        }
+        
+        .milestone-toggle {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
-        .filter-group label {
-            font-size: 0.9rem;
-            color: #8b949e;
-        }
-
-        .filter-group select,
-        .filter-group input[type="number"] {
-            padding: 6px 10px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
-            font-size: 0.9rem;
-        }
-
-        .filter-group input[type="number"] {
-            width: 120px;
-        }
-
-        .toggle-btn {
-            padding: 8px 16px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
+        
+        .milestone-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
             cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
         }
-
-        .toggle-btn:hover {
-            background: #161b22;
+        
+        .milestone-toggle label {
+            cursor: pointer;
+            margin: 0;
         }
-
-        .toggle-btn.active {
-            border-color: #3fb950;
-            background: rgba(63, 185, 80, 0.1);
-        }
-
+        
+        /* Table */
         .table-container {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin-bottom: 16px;
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
         }
-
+        
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
+        
+        thead {
+            background: #161b22;
+        }
+        
         th {
-            background: #0d1117;
-            padding: 12px;
+            padding: 16px;
             text-align: left;
             font-weight: 600;
-            border-bottom: 1px solid #30363d;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #30363d;
-        }
-
-        tr {
+            color: #e6edf3;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: background 0.2s;
+            user-select: none;
+            transition: background 0.2s ease;
         }
-
-        tr:hover {
-            background: rgba(40, 160, 240, 0.05);
+        
+        th:hover {
+            background: #1c2128;
         }
-
+        
+        th.sortable::after {
+            content: ' ↕';
+            color: #6e7681;
+            font-size: 0.8rem;
+        }
+        
+        th.sorted-asc::after {
+            content: ' ↑';
+            color: #58a6ff;
+        }
+        
+        th.sorted-desc::after {
+            content: ' ↓';
+            color: #58a6ff;
+        }
+        
+        tbody tr {
+            border-top: 1px solid #21262d;
+            transition: all 0.2s ease;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        tbody tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+        }
+        
+        tbody tr:hover td:first-child {
+            padding-left: 13px;
+        }
+        
+        td {
+            padding: 16px;
+            color: #e6edf3;
+            font-size: 0.9rem;
+        }
+        
+        td:first-child {
+            transition: padding-left 0.2s ease;
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #58a6ff;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .project-name:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+        
+        .funding-amount {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            text-align: right;
+        }
+        
         .state-badge {
             display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
-        .state-submitted { background: rgba(188, 140, 255, 0.2); color: #bc8cff; }
-        .state-approved { background: rgba(63, 185, 80, 0.2); color: #3fb950; }
-        .state-rejected { background: rgba(248, 81, 73, 0.2); color: #f85149; }
-        .state-resubmit { background: rgba(210, 153, 34, 0.2); color: #d29922; }
-        .state-review { background: rgba(40, 160, 240, 0.2); color: #28a0f0; }
-        .state-cancelled { background: rgba(72, 79, 88, 0.2); color: #484f58; }
-
-        .domain-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .domain-npi { background: rgba(40, 160, 240, 0.2); color: #28a0f0; }
-        .domain-devtooling { background: rgba(63, 185, 80, 0.2); color: #3fb950; }
-        .domain-events { background: rgba(210, 153, 34, 0.2); color: #d29922; }
-        .domain-gaming { background: rgba(188, 140, 255, 0.2); color: #bc8cff; }
-        .domain-orbit { background: rgba(57, 210, 192, 0.2); color: #39d2c0; }
-
+        
+        .state-badge.submitted { background: #1f6feb; color: #fff; }
+        .state-badge.approved { background: #238636; color: #fff; }
+        .state-badge.rejected { background: #da3633; color: #fff; }
+        .state-badge.resubmit { background: #d29922; color: #fff; }
+        .state-badge.review { background: #8250df; color: #fff; }
+        .state-badge.cancelled { background: #6e7681; color: #fff; }
+        
+        /* Pagination */
         .pagination {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 24px;
+            gap: 12px;
+            margin-bottom: 32px;
         }
-
-        .pagination-info {
+        
+        .pagination button {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .pagination button:hover:not(:disabled) {
+            background: #30363d;
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        
+        .pagination .page-info {
             color: #8b949e;
             font-size: 0.9rem;
         }
-
-        .pagination-controls {
-            display: flex;
-            gap: 8px;
-        }
-
-        .pagination-btn {
-            padding: 6px 12px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .pagination-btn:hover:not(:disabled) {
-            background: #161b22;
-            border-color: #28a0f0;
-        }
-
-        .pagination-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .modal-overlay {
+        
+        /* Modal */
+        .modal-backdrop {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
-            padding: 20px;
+            padding: 24px;
         }
-
-        .modal-overlay.open {
+        
+        .modal-backdrop.show {
             display: flex;
-            animation: fadeIn 0.2s;
+            animation: fadeIn 0.2s ease;
         }
-
+        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        .modal-content {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            max-width: 700px;
+        
+        .modal {
+            background: #12171e;
+            border: 1px solid #1e2833;
+            border-radius: 16px;
+            max-width: 900px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.2s;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+            animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
+        
         @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-
+        
         .modal-header {
             padding: 24px;
-            border-bottom: 1px solid #30363d;
-            position: relative;
+            border-bottom: 1px solid #21262d;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
         }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #8b949e;
+        
+        .modal-header h2 {
             font-size: 1.5rem;
-            cursor: pointer;
+            font-weight: 700;
+            color: #e6edf3;
+            margin-bottom: 8px;
+        }
+        
+        .modal-close {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
             width: 32px;
             height: 32px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            padding-right: 40px;
+        
+        .modal-close:hover {
+            background: #30363d;
         }
-
-        .modal-subtitle {
-            color: #8b949e;
-            font-size: 1rem;
-        }
-
+        
         .modal-body {
             padding: 24px;
         }
-
+        
         .modal-section {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #21262d;
         }
-
-        .modal-section-title {
-            font-size: 0.9rem;
+        
+        .modal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .modal-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
             color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .modal-section p,
+        .modal-section .info-row {
+            color: #e6edf3;
             margin-bottom: 8px;
+            line-height: 1.6;
         }
-
-        .modal-section-content {
-            font-size: 1rem;
-        }
-
-        .modal-badges {
+        
+        .info-row {
             display: flex;
             gap: 8px;
-            margin-top: 12px;
-            flex-wrap: wrap;
         }
-
-        .modal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
+        
+        .info-row strong {
+            color: #8b949e;
+            min-width: 120px;
         }
-
+        
         .milestones-table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 8px;
+            margin-top: 12px;
         }
-
+        
         .milestones-table th,
         .milestones-table td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #30363d;
         }
-
-        .milestones-table th {
-            background: #0d1117;
-            font-weight: 600;
-            font-size: 0.9rem;
+        
+        .milestones-table thead {
+            background: #161b22;
         }
-
-        .milestones-table .total-row {
-            font-weight: 600;
-            background: #0d1117;
+        
+        .milestones-table tbody tr {
+            border-top: 1px solid #21262d;
         }
-
-        .questbook-link {
+        
+        .questbook-btn {
             display: inline-block;
-            padding: 10px 20px;
-            background: #28a0f0;
+            background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
             color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 6px;
-            margin-top: 16px;
-            transition: all 0.2s;
             font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(31, 111, 235, 0.3);
         }
-
-        .questbook-link:hover {
-            background: #1f8cd8;
-            transform: translateY(-1px);
+        
+        .questbook-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(31, 111, 235, 0.4);
         }
-
+        
+        /* Footer */
         footer {
             text-align: center;
-            padding: 24px;
-            color: #8b949e;
+            padding: 32px;
+            color: #6e7681;
             font-size: 0.9rem;
         }
-
+        
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        footer a:hover {
+            color: #79c0ff;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
             .charts-row {
                 grid-template-columns: 1fr;
             }
-
+            
+            .date-picker-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .date-picker-group input {
+                width: 100%;
+            }
+            
             table {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
-
-            th:nth-child(n+4),
-            td:nth-child(n+4) {
-                display: none;
+            
+            th, td {
+                padding: 10px 8px;
             }
+        }
+        
+        /* Flatpickr Dark Theme Overrides */
+        .flatpickr-calendar {
+            background: #161b22;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        
+        .flatpickr-day.selected {
+            background: #58a6ff;
+            border-color: #58a6ff;
+        }
+        
+        .flatpickr-day:hover {
+            background: #21262d;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <header>
-            <h1>Arbitrum DAO Season 3 Grant Dashboard</h1>
-            <div class="last-updated" id="lastUpdated">Loading...</div>
+            <h1>🏛️ Arbitrum DAO Grants Dashboard</h1>
+            <p class="subtitle">Season 3 Grant Applications Overview</p>
+            <p class="last-updated" id="lastUpdated">Loading...</p>
         </header>
-
-        <!-- Reporting Period -->
-        <div class="reporting-period">
-            <h2>📊 Reporting Period</h2>
-            <div class="date-picker-row">
-                <label>Start Date:</label>
-                <input type="date" id="startDate">
-                <label>End Date:</label>
-                <input type="date" id="endDate">
+        
+        <!-- Reporting Period Section -->
+        <div class="reporting-period-section">
+            <div class="reporting-period-toggle" id="reportingToggle">
+                <h2>📊 Reporting Period</h2>
+                <span class="toggle-icon">▼</span>
             </div>
-            <div class="period-summary" id="periodSummary"></div>
-        </div>
-
-        <!-- Sankey Diagram -->
-        <div class="sankey-container">
-            <h3>Application Flow: Inflow → Outcomes</h3>
-            <svg id="sankeyDiagram"></svg>
-        </div>
-
-        <!-- Inflow/Processed Panels -->
-        <div class="panels-row">
-            <div class="panel">
-                <h3>📥 Inflow (Received in Period)</h3>
-                <div class="panel-stats" id="inflowStats"></div>
+            <div class="reporting-period-content" id="reportingContent">
+                <div class="reporting-period-inner">
+                    <div class="date-picker-container">
+                        <div class="date-picker-group">
+                            <label>Start Date</label>
+                            <input type="text" id="startDate" placeholder="Select start date">
+                        </div>
+                        <div class="date-picker-group">
+                            <label>End Date</label>
+                            <input type="text" id="endDate" placeholder="Select end date">
+                        </div>
+                        <button class="clear-period-btn" id="clearPeriodBtn">Clear Period</button>
+                    </div>
+                    
+                    <div class="sankey-container">
+                        <h3>Application Flow</h3>
+                        <svg id="sankeyChart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                    
+                    <div class="period-panels">
+                        <div class="period-panel">
+                            <h3>Applications Received</h3>
+                            <div class="count" id="inflowCount">0</div>
+                            <div class="label">New applications in period</div>
+                        </div>
+                        <div class="period-panel">
+                            <h3>Applications Processed</h3>
+                            <div class="count" id="processedCount">0</div>
+                            <div class="label">Decisions made in period</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="panel">
-                <h3>✅ Processed (Updated in Period)</h3>
-                <div class="panel-stats" id="processedStats"></div>
-            </div>
         </div>
-
-        <!-- Domain Cards -->
-        <div class="domain-cards" id="domainCards"></div>
-
+        
+        <!-- Domain Overview -->
+        <div class="domain-overview" id="domainOverview"></div>
+        
         <!-- Stats Row -->
-        <div class="stats-row" id="statsRow"></div>
-
-        <!-- Charts -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <h3>Total Applications</h3>
+                <div class="value" id="totalApps">0</div>
+                <div class="subvalue">Across all domains</div>
+            </div>
+            <div class="stat-card highlight">
+                <h3>Approval Rate</h3>
+                <div class="value" id="approvalRate">0%</div>
+                <div class="subvalue"><span id="approvedCount">0</span> approved</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Approved Budget</h3>
+                <div class="value" id="approvedBudget">$0</div>
+                <div class="subvalue">Grants awarded</div>
+            </div>
+        </div>
+        
+        <!-- Charts Row -->
         <div class="charts-row">
             <div class="chart-card">
                 <h3>Applications by Month</h3>
-                <canvas id="monthlyChart"></canvas>
+                <div class="chart-container">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
             </div>
             <div class="chart-card">
                 <h3>Applications by State</h3>
-                <canvas id="stateChart"></canvas>
+                <div class="chart-container">
+                    <canvas id="stateChart"></canvas>
+                </div>
             </div>
         </div>
-
-        <!-- Filter Bar -->
-        <div class="filter-bar">
-            <input type="text" class="search-box" id="searchBox" placeholder="Search by project name, applicant, or category...">
+        
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-row">
+                <div class="search-box">
+                    <input type="text" id="searchBox" placeholder="Search by project name, applicant, or category...">
+                </div>
+            </div>
             
-            <div class="state-buttons" id="stateButtons"></div>
-
-            <div class="advanced-filters">
+            <div class="filter-row">
+                <div class="state-filters" id="stateFilters"></div>
+            </div>
+            
+            <div class="filter-row">
                 <div class="filter-group">
-                    <label>Category:</label>
+                    <label>Category</label>
                     <select id="categoryFilter">
                         <option value="">All Categories</option>
                     </select>
                 </div>
+                
                 <div class="filter-group">
-                    <label>Funding Range:</label>
-                    <input type="number" id="minFunding" placeholder="Min $">
-                    <span style="color: #8b949e;">to</span>
-                    <input type="number" id="maxFunding" placeholder="Max $">
+                    <label>Funding Range</label>
+                    <div class="funding-range">
+                        <input type="number" id="minFunding" placeholder="Min $">
+                        <span>—</span>
+                        <input type="number" id="maxFunding" placeholder="Max $">
+                    </div>
                 </div>
-                <button class="toggle-btn" id="milestonesToggle">Has Milestones</button>
+                
+                <div class="filter-group">
+                    <div class="milestone-toggle">
+                        <input type="checkbox" id="milestonesOnly">
+                        <label for="milestonesOnly">Has Milestones</label>
+                    </div>
+                </div>
             </div>
         </div>
-
+        
         <!-- Table -->
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Project</th>
-                        <th>Domain</th>
-                        <th>State</th>
-                        <th>Category</th>
-                        <th>Funding Ask</th>
-                        <th>Grant Amount</th>
-                        <th>Age (days)</th>
-                        <th>Submitted</th>
+                        <th class="sortable" data-column="name">Project</th>
+                        <th class="sortable" data-column="domain">Domain</th>
+                        <th class="sortable" data-column="state">State</th>
+                        <th class="sortable" data-column="category">Category</th>
+                        <th class="sortable" data-column="fundingAsk">Funding Ask</th>
+                        <th class="sortable" data-column="grantAmount">Grant Amount</th>
+                        <th class="sortable" data-column="ageDays">Age (days)</th>
+                        <th class="sortable" data-column="created">Submitted</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody"></tbody>
             </table>
         </div>
-
+        
         <!-- Pagination -->
         <div class="pagination">
-            <div class="pagination-info" id="paginationInfo"></div>
-            <div class="pagination-controls">
-                <button class="pagination-btn" id="firstPage">← First</button>
-                <button class="pagination-btn" id="prevPage">‹ Prev</button>
-                <span class="pagination-info" id="pageInfo"></span>
-                <button class="pagination-btn" id="nextPage">Next ›</button>
-                <button class="pagination-btn" id="lastPage">Last →</button>
-            </div>
+            <button id="firstPage">First</button>
+            <button id="prevPage">Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button id="nextPage">Next</button>
+            <button id="lastPage">Last</button>
         </div>
-
+        
+        <!-- Footer -->
         <footer>
-            Arbitrum DAO Season 3 Grant Dashboard • Built with Chart.js
+            <p>Built for the Arbitrum DAO community · Data from <a href="https://arbitrum.questbook.app/" target="_blank">Questbook</a></p>
+            <p style="margin-top: 8px;">Dashboard v3 · Last updated: <span id="footerLastUpdated"></span></p>
         </footer>
     </div>
-
+    
+    <!-- Application Modal -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle"></h2>
+                </div>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+    
+    <!-- CDN Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    
     <script>
         // Global state
-        let data = null;
-        let filteredApps = [];
+        let allData = null;
+        let filteredData = [];
         let currentPage = 1;
-        const itemsPerPage = 25;
-        let charts = {};
+        let itemsPerPage = 25;
+        let sortColumn = 'created';
+        let sortDirection = 'desc';
+        let selectedDomain = 'all';
+        let selectedState = 'all';
+        let periodActive = false;
+        let periodStart = null;
+        let periodEnd = null;
+        let startDatePicker = null;
+        let endDatePicker = null;
         
-        // Filter state
-        let filters = {
-            search: '',
-            state: 'all',
-            domain: 'all',
-            category: '',
-            minFunding: null,
-            maxFunding: null,
-            hasMilestones: false,
-            startDate: null,
-            endDate: null
-        };
-
-        // State
-
-        // Load data
+        // Chart instances
+        let monthlyChart = null;
+        let stateChart = null;
+        
+        // Initialize
+        async function init() {
+            try {
+                await loadData();
+                setupEventListeners();
+                setupDatePickers();
+                render();
+            } catch (error) {
+                console.error('Initialization failed:', error);
+                document.getElementById('lastUpdated').textContent = 'Error loading data';
+            }
+        }
+        
+        // Load data from JSON
         async function loadData() {
             try {
                 let response = await fetch('/data/all-domains-v2.json');
                 if (!response.ok) {
                     response = await fetch('/data/all-domains-data.json');
                 }
-                data = await response.json();
+                allData = await response.json();
                 
-                document.getElementById('lastUpdated').textContent = 
-                    `Last updated: ${new Date(data.lastUpdated).toLocaleString()}`;
-                
-                initializeDatePickers();
-                initializeFilters();
-                render();
+                const now = new Date().toLocaleString('en-US', { 
+                    timeZone: 'UTC',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                });
+                document.getElementById('lastUpdated').textContent = `Last updated: ${now}`;
+                document.getElementById('footerLastUpdated').textContent = now;
             } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('lastUpdated').textContent = 'Error loading data';
+                throw new Error('Failed to load grant data');
             }
         }
-
-        // Initialize date pickers with defaults
-        function initializeDatePickers() {
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Reporting period toggle
+            document.getElementById('reportingToggle').addEventListener('click', toggleReportingPeriod);
+            document.getElementById('clearPeriodBtn').addEventListener('click', clearPeriod);
+            
+            // Search and filters
+            document.getElementById('searchBox').addEventListener('input', debounce(applyFilters, 300));
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('minFunding').addEventListener('input', debounce(applyFilters, 500));
+            document.getElementById('maxFunding').addEventListener('input', debounce(applyFilters, 500));
+            document.getElementById('milestonesOnly').addEventListener('change', applyFilters);
+            
+            // Table sorting
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const column = th.dataset.column;
+                    if (sortColumn === column) {
+                        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        sortColumn = column;
+                        sortDirection = 'desc';
+                    }
+                    updateSortIndicators();
+                    renderTable();
+                });
+            });
+            
+            // Pagination
+            document.getElementById('firstPage').addEventListener('click', () => goToPage(1));
+            document.getElementById('prevPage').addEventListener('click', () => goToPage(currentPage - 1));
+            document.getElementById('nextPage').addEventListener('click', () => goToPage(currentPage + 1));
+            document.getElementById('lastPage').addEventListener('click', () => goToPage(Math.ceil(filteredData.length / itemsPerPage)));
+            
+            // Modal
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) closeModal();
+            });
+        }
+        
+        // Setup Flatpickr date pickers
+        function setupDatePickers() {
             const now = new Date();
             const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
             const startOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
             
-            const startInput = document.getElementById('startDate');
-            const endInput = document.getElementById('endDate');
-            
-            startInput.value = startOfMonth.toISOString().split('T')[0];
-            endInput.value = startOfNextMonth.toISOString().split('T')[0];
-            
-            filters.startDate = startOfMonth;
-            filters.endDate = startOfNextMonth;
-            
-            startInput.addEventListener('change', (e) => {
-                filters.startDate = new Date(e.target.value);
-                currentPage = 1;
-                render();
+            startDatePicker = flatpickr('#startDate', {
+                dateFormat: 'd-m-Y',
+                altInput: true,
+                altFormat: 'd-m-Y',
+                defaultDate: startOfMonth,
+                onChange: (selectedDates) => {
+                    if (selectedDates.length > 0) {
+                        periodStart = selectedDates[0];
+                        applyPeriodFilter();
+                    }
+                }
             });
             
-            endInput.addEventListener('change', (e) => {
-                filters.endDate = new Date(e.target.value);
-                currentPage = 1;
-                render();
+            endDatePicker = flatpickr('#endDate', {
+                dateFormat: 'd-m-Y',
+                altInput: true,
+                altFormat: 'd-m-Y',
+                defaultDate: startOfNextMonth,
+                onChange: (selectedDates) => {
+                    if (selectedDates.length > 0) {
+                        periodEnd = selectedDates[0];
+                        applyPeriodFilter();
+                    }
+                }
             });
         }
-
-        // Initialize filters
-        function initializeFilters() {
-            // State buttons
-            const states = ['all', 'submitted', 'approved', 'resubmit', 'rejected'];
-            const stateButtons = document.getElementById('stateButtons');
-            states.forEach(state => {
-                const btn = document.createElement('button');
-                btn.className = 'state-btn' + (state === 'all' ? ' active' : '');
-                btn.textContent = state === 'all' ? 'All' : state.charAt(0).toUpperCase() + state.slice(1);
-                btn.addEventListener('click', () => {
-                    filters.state = state;
-                    currentPage = 1;
-                    document.querySelectorAll('.state-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    render();
-                });
-                stateButtons.appendChild(btn);
-            });
-
-            // Category filter
-            const categories = new Set();
-            Object.values(data.domains).forEach(domain => {
-                Object.keys(domain.categories || {}).forEach(cat => categories.add(cat));
-            });
-            const categorySelect = document.getElementById('categoryFilter');
-            Array.from(categories).sort().forEach(cat => {
-                const option = document.createElement('option');
-                option.value = cat;
-                option.textContent = cat;
-                categorySelect.appendChild(option);
-            });
-            categorySelect.addEventListener('change', (e) => {
-                filters.category = e.target.value;
-                currentPage = 1;
-                render();
-            });
-
-            // Search box
-            document.getElementById('searchBox').addEventListener('input', (e) => {
-                filters.search = e.target.value.toLowerCase();
-                currentPage = 1;
-                render();
-            });
-
-            // Funding range
-            document.getElementById('minFunding').addEventListener('input', (e) => {
-                filters.minFunding = e.target.value ? parseFloat(e.target.value) : null;
-                currentPage = 1;
-                render();
-            });
-            document.getElementById('maxFunding').addEventListener('input', (e) => {
-                filters.maxFunding = e.target.value ? parseFloat(e.target.value) : null;
-                currentPage = 1;
-                render();
-            });
-
-            // Milestones toggle
-            document.getElementById('milestonesToggle').addEventListener('click', (e) => {
-                filters.hasMilestones = !filters.hasMilestones;
-                e.target.classList.toggle('active');
-                currentPage = 1;
-                render();
-            });
-        }
-
-        // Parse funding string to number
-        function parseFunding(str) {
-            if (!str) return 0;
-            return parseFloat(str.replace(/[$,\s]/g, ''));
-        }
-
-        // Get all applications across domains
-        function getAllApplications() {
-            const apps = [];
-            Object.entries(data.domains).forEach(([domainKey, domain]) => {
-                (domain.applications || []).forEach(app => {
-                    apps.push({ ...app, domainKey, domainName: domain.info.short });
-                });
-            });
-            return apps;
-        }
-
-        // Apply filters to get filtered applications
-        function getFilteredApplications() {
-            let apps = getAllApplications();
-
-            // Period filter (CRITICAL: affects all features)
-            if (filters.startDate && filters.endDate) {
-                const startTs = filters.startDate.getTime() / 1000;
-                const endTs = filters.endDate.getTime() / 1000;
-                apps = apps.filter(app => 
-                    app.created >= startTs && app.created < endTs
-                );
+        
+        // Toggle reporting period section
+        function toggleReportingPeriod() {
+            const content = document.getElementById('reportingContent');
+            const icon = document.querySelector('.toggle-icon');
+            const isExpanded = content.classList.contains('expanded');
+            
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                icon.classList.remove('expanded');
+                periodActive = false;
+                applyFilters();
+            } else {
+                content.classList.add('expanded');
+                icon.classList.add('expanded');
+                periodActive = true;
+                
+                // Set default dates if not set
+                if (!periodStart && startDatePicker) {
+                    periodStart = startDatePicker.selectedDates[0];
+                }
+                if (!periodEnd && endDatePicker) {
+                    periodEnd = endDatePicker.selectedDates[0];
+                }
+                
+                applyPeriodFilter();
             }
-
-            // State filter
-            if (filters.state !== 'all') {
-                apps = apps.filter(app => app.state === filters.state);
-            }
-
-            // Domain filter
-            if (filters.domain !== 'all') {
-                apps = apps.filter(app => app.domainKey === filters.domain);
-            }
-
-            // Category filter
-            if (filters.category) {
-                apps = apps.filter(app => app.category === filters.category);
-            }
-
-            // Search filter
-            if (filters.search) {
-                apps = apps.filter(app => {
-                    const name = (app.name || app.applicant || '').toLowerCase();
-                    const applicant = (app.applicant || '').toLowerCase();
-                    const category = (app.category || '').toLowerCase();
-                    return name.includes(filters.search) || 
-                           applicant.includes(filters.search) || 
-                           category.includes(filters.search);
-                });
-            }
-
-            // Funding range filter
-            if (filters.minFunding !== null || filters.maxFunding !== null) {
-                apps = apps.filter(app => {
-                    const amount = parseFunding(app.fundingAsk || app.grantAmount);
-                    if (filters.minFunding !== null && amount < filters.minFunding) return false;
-                    if (filters.maxFunding !== null && amount > filters.maxFunding) return false;
-                    return true;
-                });
-            }
-
-            // Milestones filter
-            if (filters.hasMilestones) {
-                apps = apps.filter(app => app.milestones && app.milestones.length > 0);
-            }
-
-            return apps;
         }
-
-        // Get applications for inflow (created in period)
-        function getInflowApplications() {
-            const apps = getAllApplications();
-            if (!filters.startDate || !filters.endDate) return apps;
-            
-            const startTs = filters.startDate.getTime() / 1000;
-            const endTs = filters.endDate.getTime() / 1000;
-            return apps.filter(app => app.created >= startTs && app.created < endTs);
+        
+        // Clear period filter
+        function clearPeriod() {
+            const content = document.getElementById('reportingContent');
+            const icon = document.querySelector('.toggle-icon');
+            content.classList.remove('expanded');
+            icon.classList.remove('expanded');
+            periodActive = false;
+            periodStart = null;
+            periodEnd = null;
+            applyFilters();
         }
-
-        // Get applications for processed (updated in period, not submitted)
-        function getProcessedApplications() {
-            const apps = getAllApplications();
-            if (!filters.startDate || !filters.endDate) return apps;
+        
+        // Apply period filter
+        function applyPeriodFilter() {
+            if (!periodActive || !periodStart || !periodEnd) {
+                applyFilters();
+                return;
+            }
             
-            const startTs = filters.startDate.getTime() / 1000;
-            const endTs = filters.endDate.getTime() / 1000;
-            return apps.filter(app => 
-                app.updated >= startTs && 
-                app.updated < endTs && 
-                app.state !== 'submitted'
-            );
+            const startTimestamp = Math.floor(periodStart.getTime() / 1000);
+            const endTimestamp = Math.floor(periodEnd.getTime() / 1000);
+            
+            // Filter apps created in period
+            const inflowApps = getAllApplications().filter(app => {
+                return app.created >= startTimestamp && app.created < endTimestamp;
+            });
+            
+            // Filter apps updated in period with state !== submitted
+            const processedApps = getAllApplications().filter(app => {
+                return app.updated >= startTimestamp && app.updated < endTimestamp && app.state !== 'submitted';
+            });
+            
+            // Update panels
+            document.getElementById('inflowCount').textContent = inflowApps.length;
+            document.getElementById('processedCount').textContent = processedApps.length;
+            
+            // Draw Sankey
+            drawSankey(inflowApps);
+            
+            // Apply other filters with period constraint
+            applyFilters();
         }
-
-        // Render everything
-        function render() {
-            filteredApps = getFilteredApplications();
-            renderPeriodSummary();
-            renderSankey();
-            renderPanels();
-            renderDomainCards();
-            renderStats();
-            renderCharts();
-            renderTable();
-            renderPagination();
-        }
-
-        // Render period summary
-        function renderPeriodSummary() {
-            const inflow = getInflowApplications();
-            const processed = getProcessedApplications();
-            
-            const html = `
-                <div class="stat-card">
-                    <div class="label">Applications Received</div>
-                    <div class="value">${inflow.length}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="label">Applications Processed</div>
-                    <div class="value">${processed.length}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="label">Approval Rate</div>
-                    <div class="value">${processed.length ? ((processed.filter(a => a.state === 'approved').length / processed.length) * 100).toFixed(1) : 0}%</div>
-                </div>
-            `;
-            document.getElementById('periodSummary').innerHTML = html;
-        }
-
-        // Render Sankey diagram
-        function renderSankey() {
-            const inflow = getInflowApplications();
-            const approved = inflow.filter(a => a.state === 'approved').length;
-            const rejected = inflow.filter(a => a.state === 'rejected').length;
-            const resubmit = inflow.filter(a => a.state === 'resubmit').length;
-            const pending = inflow.filter(a => a.state === 'submitted').length;
-            
-            const svg = document.getElementById('sankeyDiagram');
-            const width = svg.clientWidth || 800;
-            const height = 400;
-            
-            svg.setAttribute('width', width);
-            svg.setAttribute('height', height);
-            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-            
-            // Clear existing content
+        
+        // Draw Sankey chart
+        function drawSankey(apps) {
+            const svg = document.getElementById('sankeyChart');
             svg.innerHTML = '';
             
-            const leftX = 100;
-            const rightX = width - 200;
-            const nodeWidth = 20;
-            
-            const total = inflow.length;
-            if (total === 0) {
+            if (apps.length === 0) {
                 const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', width / 2);
-                text.setAttribute('y', height / 2);
+                text.setAttribute('x', '400');
+                text.setAttribute('y', '200');
                 text.setAttribute('text-anchor', 'middle');
-                text.setAttribute('fill', '#8b949e');
+                text.setAttribute('fill', '#6e7681');
+                text.setAttribute('font-size', '16');
                 text.textContent = 'No applications in selected period';
                 svg.appendChild(text);
                 return;
             }
             
-            // Calculate positions
-            const outcomes = [
-                { label: 'Approved', count: approved, color: '#3fb950', y: 0 },
-                { label: 'Rejected', count: rejected, color: '#f85149', y: 0 },
-                { label: 'Resubmit', count: resubmit, color: '#d29922', y: 0 },
-                { label: 'Still Pending', count: pending, color: '#bc8cff', y: 0 }
-            ].filter(o => o.count > 0);
-            
-            const totalHeight = height - 100;
-            let currentY = 50;
-            outcomes.forEach(outcome => {
-                const outcomeHeight = (outcome.count / total) * totalHeight;
-                outcome.y = currentY;
-                outcome.height = outcomeHeight;
-                currentY += outcomeHeight + 20;
+            // Count by state
+            const stateCounts = {};
+            apps.forEach(app => {
+                stateCounts[app.state] = (stateCounts[app.state] || 0) + 1;
             });
             
-            const leftNodeHeight = totalHeight;
-            const leftY = 50;
+            const total = apps.length;
+            const states = Object.keys(stateCounts).sort((a, b) => stateCounts[b] - stateCounts[a]);
             
-            // Draw flows (behind)
-            outcomes.forEach(outcome => {
-                if (outcome.count === 0) return;
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                const leftMid = leftY + leftNodeHeight / 2;
-                const rightMid = outcome.y + outcome.height / 2;
-                const d = `M ${leftX + nodeWidth} ${leftMid} 
-                          C ${(leftX + rightX) / 2} ${leftMid}, 
-                            ${(leftX + rightX) / 2} ${rightMid}, 
-                            ${rightX} ${rightMid}`;
-                path.setAttribute('d', d);
-                path.setAttribute('fill', 'none');
-                path.setAttribute('stroke', outcome.color);
-                path.setAttribute('stroke-width', outcome.height);
-                path.setAttribute('opacity', '0.4');
-                svg.appendChild(path);
-            });
+            // SVG dimensions
+            const width = 800;
+            const height = 400;
+            const nodeWidth = 30;
+            const padding = 40;
+            
+            // Left node (Received)
+            const leftX = 100;
+            const leftY = padding;
+            const leftHeight = height - 2 * padding;
             
             // Draw left node
             const leftNode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             leftNode.setAttribute('x', leftX);
             leftNode.setAttribute('y', leftY);
             leftNode.setAttribute('width', nodeWidth);
-            leftNode.setAttribute('height', leftNodeHeight);
-            leftNode.setAttribute('fill', '#28a0f0');
+            leftNode.setAttribute('height', leftHeight);
+            leftNode.setAttribute('fill', '#58a6ff');
+            leftNode.setAttribute('opacity', '0.8');
+            leftNode.setAttribute('rx', '4');
             svg.appendChild(leftNode);
             
+            // Left label
             const leftLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             leftLabel.setAttribute('x', leftX - 10);
-            leftLabel.setAttribute('y', leftY + leftNodeHeight / 2);
+            leftLabel.setAttribute('y', leftY + leftHeight / 2);
             leftLabel.setAttribute('text-anchor', 'end');
             leftLabel.setAttribute('fill', '#e6edf3');
             leftLabel.setAttribute('font-size', '14');
-            leftLabel.textContent = `Received: ${total}`;
+            leftLabel.setAttribute('font-weight', '600');
+            leftLabel.textContent = `Received (${total})`;
             svg.appendChild(leftLabel);
             
-            // Draw right nodes
-            outcomes.forEach(outcome => {
-                const node = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                node.setAttribute('x', rightX);
-                node.setAttribute('y', outcome.y);
-                node.setAttribute('width', nodeWidth);
-                node.setAttribute('height', outcome.height);
-                node.setAttribute('fill', outcome.color);
-                svg.appendChild(node);
-                
-                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                label.setAttribute('x', rightX + nodeWidth + 10);
-                label.setAttribute('y', outcome.y + outcome.height / 2 + 5);
-                label.setAttribute('fill', '#e6edf3');
-                label.setAttribute('font-size', '14');
-                label.textContent = `${outcome.label}: ${outcome.count}`;
-                svg.appendChild(label);
-            });
-        }
-
-        // Render inflow/processed panels
-        function renderPanels() {
-            const inflow = getInflowApplications();
-            const processed = getProcessedApplications();
-            
-            // Inflow stats
-            const inflowByState = {};
-            const inflowByDomain = {};
-            inflow.forEach(app => {
-                inflowByState[app.state] = (inflowByState[app.state] || 0) + 1;
-                inflowByDomain[app.domainKey] = (inflowByDomain[app.domainKey] || 0) + 1;
-            });
-            
-            let inflowHtml = `<div class="panel-stat"><span class="label">Total Received</span><span class="value">${inflow.length}</span></div>`;
-            Object.entries(inflowByState).forEach(([state, count]) => {
-                inflowHtml += `<div class="panel-stat"><span class="label">${state}</span><span class="value">${count}</span></div>`;
-            });
-            document.getElementById('inflowStats').innerHTML = inflowHtml;
-            
-            // Processed stats
-            const processedByState = {};
-            const processedByDomain = {};
-            processed.forEach(app => {
-                processedByState[app.state] = (processedByState[app.state] || 0) + 1;
-                processedByDomain[app.domainKey] = (processedByDomain[app.domainKey] || 0) + 1;
-            });
-            
-            let processedHtml = `<div class="panel-stat"><span class="label">Total Processed</span><span class="value">${processed.length}</span></div>`;
-            Object.entries(processedByState).forEach(([state, count]) => {
-                processedHtml += `<div class="panel-stat"><span class="label">${state}</span><span class="value">${count}</span></div>`;
-            });
-            document.getElementById('processedStats').innerHTML = processedHtml;
-        }
-
-        // Render domain cards
-        function renderDomainCards() {
-            const domainCounts = {};
-            filteredApps.forEach(app => {
-                domainCounts[app.domainKey] = (domainCounts[app.domainKey] || 0) + 1;
-            });
-            
-            const colors = {
-                npi: '#28a0f0',
-                devtooling: '#3fb950',
-                events: '#d29922',
-                gaming: '#bc8cff',
-                orbit: '#39d2c0'
+            // Right nodes
+            const rightX = width - 150;
+            let currentY = padding;
+            const stateColors = {
+                'submitted': '#1f6feb',
+                'approved': '#238636',
+                'rejected': '#da3633',
+                'resubmit': '#d29922',
+                'review': '#8250df',
+                'cancelled': '#6e7681'
             };
             
-            let html = `
-                <div class="domain-card ${filters.domain === 'all' ? 'active' : ''}" onclick="filterByDomain('all')">
-                    <div class="domain-name" style="color: #28a0f0;">All Domains</div>
-                    <div class="domain-count">${filteredApps.length}</div>
-                    <div class="domain-label">applications</div>
-                </div>
-            `;
-            
-            Object.entries(data.domains).forEach(([key, domain]) => {
-                const count = domainCounts[key] || 0;
-                html += `
-                    <div class="domain-card ${filters.domain === key ? 'active' : ''}" onclick="filterByDomain('${key}')">
-                        <div class="domain-name" style="color: ${colors[key]};">${domain.info.short}</div>
-                        <div class="domain-count">${count}</div>
-                        <div class="domain-label">applications</div>
-                    </div>
+            // Draw flows and right nodes
+            let flowStartY = leftY;
+            states.forEach(state => {
+                const count = stateCounts[state];
+                const proportion = count / total;
+                const flowHeight = leftHeight * proportion;
+                const nodeHeight = Math.max(flowHeight, 20); // Minimum height for visibility
+                
+                // Draw flow (Bezier curve)
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const startX = leftX + nodeWidth;
+                const startY = flowStartY + flowHeight / 2;
+                const endX = rightX;
+                const endY = currentY + nodeHeight / 2;
+                const controlX = (startX + endX) / 2;
+                
+                const pathData = `
+                    M ${startX} ${flowStartY}
+                    C ${controlX} ${flowStartY}, ${controlX} ${currentY}, ${endX} ${currentY}
+                    L ${endX} ${currentY + nodeHeight}
+                    C ${controlX} ${currentY + nodeHeight}, ${controlX} ${flowStartY + flowHeight}, ${startX} ${flowStartY + flowHeight}
+                    Z
                 `;
+                
+                path.setAttribute('d', pathData);
+                path.setAttribute('fill', stateColors[state] || '#6e7681');
+                path.setAttribute('opacity', '0.3');
+                svg.appendChild(path);
+                
+                // Draw right node
+                const rightNode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rightNode.setAttribute('x', rightX);
+                rightNode.setAttribute('y', currentY);
+                rightNode.setAttribute('width', nodeWidth);
+                rightNode.setAttribute('height', nodeHeight);
+                rightNode.setAttribute('fill', stateColors[state] || '#6e7681');
+                rightNode.setAttribute('opacity', '0.8');
+                rightNode.setAttribute('rx', '4');
+                svg.appendChild(rightNode);
+                
+                // Right label
+                const rightLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                rightLabel.setAttribute('x', rightX + nodeWidth + 10);
+                rightLabel.setAttribute('y', currentY + nodeHeight / 2 + 5);
+                rightLabel.setAttribute('fill', '#e6edf3');
+                rightLabel.setAttribute('font-size', '13');
+                rightLabel.textContent = `${state.charAt(0).toUpperCase() + state.slice(1)} (${count})`;
+                svg.appendChild(rightLabel);
+                
+                flowStartY += flowHeight;
+                currentY += nodeHeight + 8; // Small gap between nodes
             });
-            
-            document.getElementById('domainCards').innerHTML = html;
         }
-
-        function filterByDomain(domain) {
-            filters.domain = domain;
+        
+        // Get all applications
+        function getAllApplications() {
+            if (!allData || !allData.domains) return [];
+            
+            const apps = [];
+            Object.keys(allData.domains).forEach(domainKey => {
+                const domain = allData.domains[domainKey];
+                if (domain.applications) {
+                    domain.applications.forEach(app => {
+                        apps.push({
+                            ...app,
+                            domainKey,
+                            domainName: domain.info.short || domain.info.name
+                        });
+                    });
+                }
+            });
+            return apps;
+        }
+        
+        // Apply all filters
+        function applyFilters() {
+            let apps = getAllApplications();
+            
+            // Period filter (if active)
+            if (periodActive && periodStart && periodEnd) {
+                const startTimestamp = Math.floor(periodStart.getTime() / 1000);
+                const endTimestamp = Math.floor(periodEnd.getTime() / 1000);
+                apps = apps.filter(app => app.created >= startTimestamp && app.created < endTimestamp);
+            }
+            
+            // Domain filter
+            if (selectedDomain !== 'all') {
+                apps = apps.filter(app => app.domainKey === selectedDomain);
+            }
+            
+            // State filter
+            if (selectedState !== 'all') {
+                apps = apps.filter(app => app.state === selectedState);
+            }
+            
+            // Search filter
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            if (searchTerm) {
+                apps = apps.filter(app => {
+                    const name = (app.name || app.applicant || '').toLowerCase();
+                    const applicant = (app.applicant || '').toLowerCase();
+                    const category = (app.category || '').toLowerCase();
+                    return name.includes(searchTerm) || applicant.includes(searchTerm) || category.includes(searchTerm);
+                });
+            }
+            
+            // Category filter
+            const category = document.getElementById('categoryFilter').value;
+            if (category) {
+                apps = apps.filter(app => app.category === category);
+            }
+            
+            // Funding range filter
+            const minFunding = parseFloat(document.getElementById('minFunding').value);
+            const maxFunding = parseFloat(document.getElementById('maxFunding').value);
+            if (!isNaN(minFunding)) {
+                apps = apps.filter(app => parseFunding(app.fundingAsk) >= minFunding);
+            }
+            if (!isNaN(maxFunding)) {
+                apps = apps.filter(app => parseFunding(app.fundingAsk) <= maxFunding);
+            }
+            
+            // Milestones filter
+            if (document.getElementById('milestonesOnly').checked) {
+                apps = apps.filter(app => app.milestones && app.milestones.length > 0);
+            }
+            
+            filteredData = apps;
             currentPage = 1;
             render();
         }
-
+        
+        // Parse funding string to number
+        function parseFunding(str) {
+            if (!str) return 0;
+            const cleaned = str.replace(/[$,]/g, '');
+            return parseFloat(cleaned) || 0;
+        }
+        
+        // Format funding for display
+        function formatFunding(str) {
+            if (!str) return '$0';
+            const num = parseFunding(str);
+            return '$' + num.toLocaleString();
+        }
+        
+        // Render everything
+        function render() {
+            renderDomainCards();
+            renderStats();
+            renderCharts();
+            renderStateFilters();
+            renderCategoryFilter();
+            renderTable();
+            updateSortIndicators();
+        }
+        
+        // Render domain cards
+        function renderDomainCards() {
+            const container = document.getElementById('domainOverview');
+            container.innerHTML = '';
+            
+            if (!allData || !allData.domains) return;
+            
+            const domains = allData.domains;
+            const totalApps = getAllApplications().length;
+            
+            // All domains card
+            const allCard = createDomainCard('all', 'All Domains', totalApps, 
+                `${getAllApplications().filter(a => a.state === 'approved').length} approved`);
+            container.appendChild(allCard);
+            
+            // Individual domain cards
+            Object.keys(domains).forEach(key => {
+                const domain = domains[key];
+                const count = domain.applications ? domain.applications.length : 0;
+                const approved = domain.applications ? domain.applications.filter(a => a.state === 'approved').length : 0;
+                const card = createDomainCard(key, domain.info.short || domain.info.name, count, `${approved} approved`);
+                container.appendChild(card);
+            });
+        }
+        
+        function createDomainCard(key, name, count, subtext) {
+            const card = document.createElement('div');
+            card.className = `domain-card ${key}`;
+            if (selectedDomain === key) card.classList.add('active');
+            
+            card.innerHTML = `
+                <h3>${name}</h3>
+                <div class="count">${count}</div>
+                <div class="subtext">${subtext}</div>
+            `;
+            
+            card.addEventListener('click', () => {
+                selectedDomain = key;
+                applyFilters();
+            });
+            
+            return card;
+        }
+        
         // Render stats
         function renderStats() {
-            const approved = filteredApps.filter(a => a.state === 'approved');
-            const approvalRate = filteredApps.length ? (approved.length / filteredApps.length * 100).toFixed(1) : 0;
+            const apps = periodActive && periodStart && periodEnd 
+                ? getAllApplications().filter(app => {
+                    const start = Math.floor(periodStart.getTime() / 1000);
+                    const end = Math.floor(periodEnd.getTime() / 1000);
+                    return app.created >= start && app.created < end;
+                })
+                : getAllApplications();
             
-            let totalDisbursed = 0;
-            approved.forEach(app => {
-                totalDisbursed += parseFunding(app.grantAmount);
+            const totalApps = apps.length;
+            const approvedApps = apps.filter(a => a.state === 'approved');
+            const approvalRate = totalApps > 0 ? ((approvedApps.length / totalApps) * 100).toFixed(1) : 0;
+            
+            let totalBudget = 0;
+            approvedApps.forEach(app => {
+                totalBudget += parseFunding(app.grantAmount || app.fundingAsk);
             });
             
-            const html = `
-                <div class="stat-card">
-                    <div class="label">Total Applications</div>
-                    <div class="value">${filteredApps.length}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="label">Approval Rate</div>
-                    <div class="value">${approvalRate}%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="label">Approved Budget</div>
-                    <div class="value">$${(totalDisbursed / 1000).toFixed(0)}k</div>
-                </div>
-            `;
-            document.getElementById('statsRow').innerHTML = html;
+            document.getElementById('totalApps').textContent = totalApps.toLocaleString();
+            document.getElementById('approvalRate').textContent = approvalRate + '%';
+            document.getElementById('approvedCount').textContent = approvedApps.length.toLocaleString();
+            document.getElementById('approvedBudget').textContent = '$' + totalBudget.toLocaleString();
         }
-
+        
         // Render charts
         function renderCharts() {
-            // Destroy existing charts
-            if (charts.monthly) charts.monthly.destroy();
-            if (charts.state) charts.state.destroy();
+            const apps = periodActive && periodStart && periodEnd 
+                ? getAllApplications().filter(app => {
+                    const start = Math.floor(periodStart.getTime() / 1000);
+                    const end = Math.floor(periodEnd.getTime() / 1000);
+                    return app.created >= start && app.created < end;
+                })
+                : getAllApplications();
             
-            // Monthly chart
-            const byMonth = {};
-            filteredApps.forEach(app => {
+            renderMonthlyChart(apps);
+            renderStateChart(apps);
+        }
+        
+        function renderMonthlyChart(apps) {
+            // Destroy existing chart
+            if (monthlyChart) {
+                monthlyChart.destroy();
+            }
+            
+            // Group by month
+            const monthCounts = {};
+            apps.forEach(app => {
                 const date = new Date(app.created * 1000);
-                const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-                byMonth[key] = (byMonth[key] || 0) + 1;
+                const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+                monthCounts[monthKey] = (monthCounts[monthKey] || 0) + 1;
             });
             
-            const sortedMonths = Object.keys(byMonth).sort();
-            const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-            charts.monthly = new Chart(monthlyCtx, {
+            const sortedMonths = Object.keys(monthCounts).sort();
+            const labels = sortedMonths.map(m => {
+                const [year, month] = m.split('-');
+                const date = new Date(year, month - 1);
+                return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            });
+            const data = sortedMonths.map(m => monthCounts[m]);
+            
+            const ctx = document.getElementById('monthlyChart').getContext('2d');
+            monthlyChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: sortedMonths,
+                    labels,
                     datasets: [{
                         label: 'Applications',
-                        data: sortedMonths.map(m => byMonth[m]),
-                        backgroundColor: '#28a0f0'
+                        data,
+                        backgroundColor: 'rgba(88, 166, 255, 0.6)',
+                        borderColor: '#58a6ff',
+                        borderWidth: 2,
+                        borderRadius: 6
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#161b22',
+                            titleColor: '#e6edf3',
+                            bodyColor: '#e6edf3',
+                            borderColor: '#30363d',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false
+                        }
                     },
                     scales: {
                         y: {
                             beginAtZero: true,
                             ticks: { color: '#8b949e' },
-                            grid: { color: '#30363d' }
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' }
                         },
                         x: {
                             ticks: { color: '#8b949e' },
-                            grid: { color: '#30363d' }
+                            grid: { display: false }
                         }
                     }
                 }
             });
+        }
+        
+        function renderStateChart(apps) {
+            // Destroy existing chart
+            if (stateChart) {
+                stateChart.destroy();
+            }
             
-            // State chart
-            const byState = {};
-            filteredApps.forEach(app => {
-                byState[app.state] = (byState[app.state] || 0) + 1;
+            // Count by state
+            const stateCounts = {};
+            apps.forEach(app => {
+                stateCounts[app.state] = (stateCounts[app.state] || 0) + 1;
             });
             
-            const stateColors = {
-                submitted: '#bc8cff',
-                approved: '#3fb950',
-                rejected: '#f85149',
-                resubmit: '#d29922',
-                review: '#28a0f0',
-                cancelled: '#484f58'
-            };
+            const states = Object.keys(stateCounts);
+            const counts = states.map(s => stateCounts[s]);
+            const colors = states.map(s => {
+                const colorMap = {
+                    'submitted': '#1f6feb',
+                    'approved': '#238636',
+                    'rejected': '#da3633',
+                    'resubmit': '#d29922',
+                    'review': '#8250df',
+                    'cancelled': '#6e7681'
+                };
+                return colorMap[s] || '#6e7681';
+            });
             
-            const stateCtx = document.getElementById('stateChart').getContext('2d');
-            charts.state = new Chart(stateCtx, {
+            const ctx = document.getElementById('stateChart').getContext('2d');
+            stateChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: Object.keys(byState),
+                    labels: states.map(s => s.charAt(0).toUpperCase() + s.slice(1)),
                     datasets: [{
-                        data: Object.values(byState),
-                        backgroundColor: Object.keys(byState).map(s => stateColors[s] || '#8b949e')
+                        data: counts,
+                        backgroundColor: colors,
+                        borderColor: '#12171e',
+                        borderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'right',
-                            labels: { color: '#e6edf3' }
+                            position: 'bottom',
+                            labels: {
+                                color: '#e6edf3',
+                                padding: 12,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#161b22',
+                            titleColor: '#e6edf3',
+                            bodyColor: '#e6edf3',
+                            borderColor: '#30363d',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                label: (context) => {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
                         }
                     }
                 }
             });
         }
-
+        
+        // Render state filter buttons
+        function renderStateFilters() {
+            const container = document.getElementById('stateFilters');
+            container.innerHTML = '';
+            
+            const states = ['all', 'submitted', 'approved', 'rejected', 'resubmit', 'review', 'cancelled'];
+            const labels = {
+                'all': 'All States',
+                'submitted': 'Pending',
+                'approved': 'Approved',
+                'rejected': 'Rejected',
+                'resubmit': 'Resubmit',
+                'review': 'In Review',
+                'cancelled': 'Cancelled'
+            };
+            
+            states.forEach(state => {
+                const btn = document.createElement('button');
+                btn.className = 'state-btn';
+                if (selectedState === state) btn.classList.add('active');
+                btn.textContent = labels[state];
+                btn.addEventListener('click', () => {
+                    selectedState = state;
+                    applyFilters();
+                });
+                container.appendChild(btn);
+            });
+        }
+        
+        // Render category filter dropdown
+        function renderCategoryFilter() {
+            const select = document.getElementById('categoryFilter');
+            const currentValue = select.value;
+            
+            // Get unique categories
+            const categories = new Set();
+            getAllApplications().forEach(app => {
+                if (app.category) categories.add(app.category);
+            });
+            
+            select.innerHTML = '<option value="">All Categories</option>';
+            Array.from(categories).sort().forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                if (cat === currentValue) option.selected = true;
+                select.appendChild(option);
+            });
+        }
+        
         // Render table
         function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            // Sort data
+            const sorted = [...filteredData].sort((a, b) => {
+                let aVal = a[sortColumn];
+                let bVal = b[sortColumn];
+                
+                // Handle special columns
+                if (sortColumn === 'fundingAsk' || sortColumn === 'grantAmount') {
+                    aVal = parseFunding(aVal);
+                    bVal = parseFunding(bVal);
+                } else if (sortColumn === 'name') {
+                    aVal = (a.name || a.applicant || '').toLowerCase();
+                    bVal = (b.name || b.applicant || '').toLowerCase();
+                } else if (sortColumn === 'domain') {
+                    aVal = a.domainName.toLowerCase();
+                    bVal = b.domainName.toLowerCase();
+                }
+                
+                if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+                if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+            
+            // Paginate
             const start = (currentPage - 1) * itemsPerPage;
             const end = start + itemsPerPage;
-            const pageApps = filteredApps.slice(start, end);
+            const page = sorted.slice(start, end);
             
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = pageApps.map((app, idx) => {
-                const name = app.name || app.applicant || 'Unknown';
-                const submitted = new Date(app.created * 1000).toLocaleDateString();
-                return `
-                    <tr onclick="openModal(${start + idx})">
-                        <td><strong>${name}</strong></td>
-                        <td><span class="domain-badge domain-${app.domainKey}">${app.domainName}</span></td>
-                        <td><span class="state-badge state-${app.state}">${app.state}</span></td>
-                        <td>${app.category || 'N/A'}</td>
-                        <td>${app.fundingAsk || 'N/A'}</td>
-                        <td>${app.grantAmount || 'N/A'}</td>
-                        <td>${app.ageDays || 'N/A'}</td>
-                        <td>${submitted}</td>
-                    </tr>
+            page.forEach(app => {
+                const tr = document.createElement('tr');
+                
+                const createdDate = new Date(app.created * 1000).toLocaleDateString('en-GB');
+                
+                tr.innerHTML = `
+                    <td><span class="project-name">${app.name || app.applicant || 'Unknown'}</span></td>
+                    <td>${app.domainName}</td>
+                    <td><span class="state-badge ${app.state}">${app.state}</span></td>
+                    <td>${app.category || 'N/A'}</td>
+                    <td class="funding-amount">${formatFunding(app.fundingAsk)}</td>
+                    <td class="funding-amount">${formatFunding(app.grantAmount)}</td>
+                    <td>${app.ageDays || 0}</td>
+                    <td>${createdDate}</td>
                 `;
-            }).join('');
-        }
-
-        // Render pagination
-        function renderPagination() {
-            const totalPages = Math.ceil(filteredApps.length / itemsPerPage);
-            const start = (currentPage - 1) * itemsPerPage + 1;
-            const end = Math.min(start + itemsPerPage - 1, filteredApps.length);
+                
+                tr.querySelector('.project-name').addEventListener('click', () => openModal(app));
+                tbody.appendChild(tr);
+            });
             
-            document.getElementById('paginationInfo').textContent = 
-                `Showing ${start}-${end} of ${filteredApps.length} applications`;
-            document.getElementById('pageInfo').textContent = 
-                `Page ${currentPage} of ${totalPages || 1}`;
+            updatePagination();
+        }
+        
+        // Update pagination controls
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
             
             document.getElementById('firstPage').disabled = currentPage === 1;
             document.getElementById('prevPage').disabled = currentPage === 1;
-            document.getElementById('nextPage').disabled = currentPage >= totalPages;
-            document.getElementById('lastPage').disabled = currentPage >= totalPages;
+            document.getElementById('nextPage').disabled = currentPage === totalPages;
+            document.getElementById('lastPage').disabled = currentPage === totalPages;
         }
-
-        // Pagination controls
-        document.getElementById('firstPage').addEventListener('click', () => {
-            currentPage = 1;
-            render();
-            window.scrollTo(0, 0);
-        });
         
-        document.getElementById('prevPage').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                render();
-                window.scrollTo(0, 0);
-            }
-        });
+        function goToPage(page) {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderTable();
+        }
         
-        document.getElementById('nextPage').addEventListener('click', () => {
-            const totalPages = Math.ceil(filteredApps.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                render();
-                window.scrollTo(0, 0);
-            }
-        });
+        // Update sort indicators
+        function updateSortIndicators() {
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                if (th.dataset.column === sortColumn) {
+                    th.classList.add(sortDirection === 'asc' ? 'sorted-asc' : 'sorted-desc');
+                }
+            });
+        }
         
-        document.getElementById('lastPage').addEventListener('click', () => {
-            currentPage = Math.ceil(filteredApps.length / itemsPerPage);
-            render();
-            window.scrollTo(0, 0);
-        });
-
-        // Modal
-        function openModal(index) {
-            const app = filteredApps[index];
-            const domain = data.domains[app.domainKey];
-            const questbookUrl = `https://arbitrum.questbook.app/dashboard/?grantId=${domain.info.id}&chainId=10&role=community&proposalId=${app.id}`;
+        // Open application modal
+        function openModal(app) {
+            document.getElementById('modalTitle').textContent = app.name || app.applicant || 'Unknown';
             
-            const name = app.name || app.applicant || 'Unknown';
-            const submitted = new Date(app.created * 1000).toLocaleString();
-            const updated = new Date(app.updated * 1000).toLocaleString();
+            const createdDate = new Date(app.created * 1000).toLocaleDateString('en-GB');
+            const updatedDate = new Date(app.updated * 1000).toLocaleDateString('en-GB');
             
-            document.getElementById('modalTitle').textContent = name;
-            document.getElementById('modalSubtitle').textContent = app.applicant || 'Unknown Applicant';
-            
-            let milestonesHtml = '<p style="color: #8b949e;">No milestones defined</p>';
+            let milestonesHTML = '';
             if (app.milestones && app.milestones.length > 0) {
-                const total = app.milestones.reduce((sum, m) => sum + m.amount, 0);
-                milestonesHtml = `
+                milestonesHTML = `
                     <table class="milestones-table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Title</th>
+                                <th>Milestone</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${app.milestones.map((m, i) => `
+                            ${app.milestones.map(m => `
                                 <tr>
-                                    <td>${i + 1}</td>
-                                    <td>${m.title}</td>
-                                    <td>$${m.amount.toLocaleString()}</td>
+                                    <td>${m.title || 'Untitled'}</td>
+                                    <td class="funding-amount">${formatFunding(String(m.amount))}</td>
                                 </tr>
                             `).join('')}
-                            <tr class="total-row">
-                                <td colspan="2">Total</td>
-                                <td>$${total.toLocaleString()}</td>
-                            </tr>
                         </tbody>
                     </table>
                 `;
+            } else {
+                milestonesHTML = '<p>No milestones defined</p>';
             }
             
+            // Find domain info for Questbook link
+            const domain = allData.domains[app.domainKey];
+            const questbookUrl = `https://arbitrum.questbook.app/dashboard/?grantId=${domain.info.id}&chainId=10&role=community&proposalId=${app.id}`;
+            
             document.getElementById('modalBody').innerHTML = `
-                <div class="modal-badges">
-                    <span class="state-badge state-${app.state}">${app.state}</span>
-                    <span class="domain-badge domain-${app.domainKey}">${app.domainName}</span>
-                    ${app.category ? `<span class="domain-badge">${app.category}</span>` : ''}
+                <div class="modal-section">
+                    <h3>Details</h3>
+                    <div class="info-row"><strong>Applicant:</strong> <span>${app.applicant || 'N/A'}</span></div>
+                    <div class="info-row"><strong>Domain:</strong> <span>${app.domainName}</span></div>
+                    <div class="info-row"><strong>Category:</strong> <span>${app.category || 'N/A'}</span></div>
+                    <div class="info-row"><strong>State:</strong> <span class="state-badge ${app.state}">${app.state}</span></div>
+                    <div class="info-row"><strong>Funding Ask:</strong> <span>${formatFunding(app.fundingAsk)}</span></div>
+                    <div class="info-row"><strong>Grant Amount:</strong> <span>${formatFunding(app.grantAmount)}</span></div>
+                    <div class="info-row"><strong>Age:</strong> <span>${app.ageDays || 0} days</span></div>
+                    <div class="info-row"><strong>Submitted:</strong> <span>${createdDate}</span></div>
+                    <div class="info-row"><strong>Updated:</strong> <span>${updatedDate}</span></div>
                 </div>
                 
                 <div class="modal-section">
-                    <div class="modal-grid">
-                        <div>
-                            <div class="modal-section-title">Submitted</div>
-                            <div class="modal-section-content">${submitted}</div>
-                        </div>
-                        <div>
-                            <div class="modal-section-title">Last Updated</div>
-                            <div class="modal-section-content">${updated}</div>
-                        </div>
-                        <div>
-                            <div class="modal-section-title">Age</div>
-                            <div class="modal-section-content">${app.ageDays || 'N/A'} days</div>
-                        </div>
-                    </div>
+                    <h3>Milestones</h3>
+                    ${milestonesHTML}
                 </div>
                 
                 <div class="modal-section">
-                    <div class="modal-grid">
-                        <div>
-                            <div class="modal-section-title">Funding Ask</div>
-                            <div class="modal-section-content">${app.fundingAsk || 'N/A'}</div>
-                        </div>
-                        ${app.grantAmount ? `
-                        <div>
-                            <div class="modal-section-title">Grant Amount</div>
-                            <div class="modal-section-content">${app.grantAmount}</div>
-                        </div>
-                        ` : ''}
-                    </div>
+                    <a href="${questbookUrl}" target="_blank" class="questbook-btn">View on Questbook →</a>
                 </div>
-                
-                <div class="modal-section">
-                    <div class="modal-section-title">Milestones</div>
-                    ${milestonesHtml}
-                </div>
-                
-                <a href="${questbookUrl}" target="_blank" class="questbook-link">View on Questbook →</a>
             `;
             
-            document.getElementById('modalOverlay').classList.add('open');
+            document.getElementById('modalBackdrop').classList.add('show');
         }
-
+        
         function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('open');
+            document.getElementById('modalBackdrop').classList.remove('show');
         }
-
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('modalOverlay').addEventListener('click', (e) => {
-            if (e.target.id === 'modalOverlay') closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-
-        // Initialize
-        loadData();
+        
+        // Utility: debounce
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+        
+        // Start
+        init();
     </script>
 </body>
 </html>
