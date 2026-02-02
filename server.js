@@ -101,6 +101,16 @@ function buildChatContext(periodStart, periodEnd) {
 
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
+  // Auth check
+  const authToken = process.env.CHAT_PASSWORD;
+  if (authToken) {
+    const header = req.headers.authorization || '';
+    const provided = header.startsWith('Bearer ') ? header.slice(7) : '';
+    if (provided !== authToken) {
+      return res.status(401).json({ error: 'unauthorized' });
+    }
+  }
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(503).json({ error: 'Chat not configured — set ANTHROPIC_API_KEY' });
