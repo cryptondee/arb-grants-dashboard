@@ -1,0 +1,468 @@
+# Arbitrum DAO Season 3 Grant Program Data
+Last updated: 2026-02-02T20:25:15.563818+00:00
+
+## New Protocols & Ideas (Allocator: Castle Labs)
+Grant ID: 67d7ff7f46da2f90cc3205e9
+Total applications: 402
+States: {"submitted": 34, "rejected": 316, "resubmit": 25, "approved": 26, "cancelled": 1}
+Disbursed: $193,600
+Monthly: {"2025-03": 11, "2025-04": 60, "2025-05": 38, "2025-06": 30, "2025-07": 31, "2025-08": 21, "2025-09": 30, "2025-10": 27, "2025-11": 49, "2025-12": 48, "2026-01": 56, "2026-02": 1}
+
+### Notable applications (86):
+- mady Fofana | submitted | 2026-02-02 | 0d old | ID: 6980bfe4fb7e884efa3f083d
+- Handle Arbitrum Expansion and Developer Tooling | submitted | 2026-01-31 | 2d old | ID: 697e7f6c96f32ac6cee9deb1
+- proSEED Global | submitted | 2026-01-31 | 2d old | ID: 697e116796f32ac6cee80ac5
+- T3tris.finance | submitted | 2026-01-30 | 3d old | ID: 697c7a3896f32ac6cedefab1
+- Danijel | submitted | 2026-01-29 | 4d old | ID: 697b770096f32ac6ced804c3
+- VKX Wallet | submitted | 2026-01-29 | 4d old | ID: 697b6dfbfb7e884efa217ba5
+- SIRE | submitted | 2026-01-28 | 5d old | ID: 697a8ebefb7e884efa1b332b
+- Burko Enterprises Corp. (MiPirata) | submitted | 2026-01-28 | 5d old | ID: 697a2ab9fb7e884efa170f8f
+- LukyPool Labs | submitted | 2026-01-28 | 5d old | ID: 697a1877fb7e884efa163731
+- Sendra Labs | submitted | 2026-01-28 | 5d old | ID: 697a0942fb7e884efa15a11c
+- Stablrr Labs | submitted | 2026-01-28 | 6d old | ID: 6979c04efb7e884efa138eac
+- LukyPool Labs | submitted | 2026-01-27 | 6d old | ID: 6979354dfb7e884efa10d648
+- Barnaba Pawelczak | submitted | 2026-01-27 | 6d old | ID: 6978a168fb7e884efa0b5acd
+- Atora | submitted | 2026-01-25 | 8d old | ID: 69764a4a96f32ac6ceae5cff
+- Rythme Nagrani | submitted | 2026-01-25 | 8d old | ID: 6975faf8fb7e884efaf7cedc
+- ARUB Protocol | submitted | 2026-01-23 | 10d old | ID: 6973540c96f32ac6ce9fdc2b
+- Stefan Larus Stefansson | submitted | 2026-01-23 | 11d old | ID: 6972e1d396f32ac6ce9c1b7f
+- Chigozirim Israel / Riwe | resubmit | 2026-01-22 | 11d old | ID: 6972355196f32ac6ce96cee4
+- Umami Finance | submitted | 2026-01-21 | 12d old | ID: 6970d6f296f32ac6ce8a0c13
+- Lampros DAO | submitted | 2026-01-21 | 12d old | ID: 69709d93fb7e884efad3822e
+- Agentkit | submitted | 2026-01-17 | 16d old | ID: 696b880f96f32ac6ce5d4118
+- intentra — RWA Discovery Layer for Arbitrum | submitted | 2026-01-16 | 17d old | ID: 696ab8c6fb7e884efaa5e015
+- Matthew Ettswold | resubmit | 2026-01-15 | 18d old | ID: 6969269996f32ac6ce4cadda
+- 9lives | submitted | 2026-01-15 | 19d old | ID: 69685c2496f32ac6ce44325a
+- Ledig | submitted | 2026-01-14 | 19d old | ID: 6967e17e96f32ac6ce415737
+- Kaiju Finance | submitted | 2026-01-14 | 19d old | ID: 6967bb8196f32ac6ce3fa1ab
+- Tree Technologies | submitted | 2026-01-13 | 21d old | ID: 69660033fb7e884efa797d6a
+- Citadel Team | submitted | 2026-01-12 | 21d old | ID: 6964f42c96f32ac6ce224f14
+- Andreas Georgiou (owner of consulting LLC MINIMUM LEGITIMA TRIBUTUM S.R.L) | resubmit | 2026-01-10 | 23d old | ID: 69629bb896f32ac6ce158818
+- Yolomarkets | submitted | 2026-01-09 | 24d old | ID: 69613eec96f32ac6ce0d1a5f
+- (Re) - Amplify | resubmit | 2026-01-06 | 27d old | ID: 695d87a996f32ac6cef05e98
+- ECOBOND | resubmit | 2026-01-05 | 29d old | ID: 695b17b1fb7e884efa2bb403
+- Dmitrii | resubmit | 2026-01-03 | 31d old | ID: 6958960796f32ac6cecdc4be
+- 8ctag0n | resubmit | 2026-01-03 | 31d old | ID: 695875c5fb7e884efa1a5be8
+- Gossip Messenger | resubmit | 2025-12-30 | 34d old | ID: 6953cc62fb7e884efa0143f8
+- MiPirata Adventure | resubmit | 2025-12-30 | 35d old | ID: 6953167cfb7e884efafcf93a
+- Allbridge.io | resubmit | 2025-12-23 | 41d old | ID: 694ae610fb7e884efad9800d
+- Nathan Vandy | approved | 2025-12-22 | 42d old | ID: 69493474fb7e884efacdb96d
+- Archade | resubmit | 2025-12-20 | 44d old | ID: 69466274fb7e884efac121ab
+- Predix | resubmit | 2025-12-16 | 48d old | ID: 6941de7496f32ac6ce56448d
+- Sippy | submitted | 2025-12-11 | 53d old | ID: 693b3872fb7e884efa786e2e
+- sLiq Protocol | resubmit | 2025-12-11 | 53d old | ID: 693b0edefb7e884efa76a4d5
+- MYIKKI | resubmit | 2025-12-08 | 56d old | ID: 6936ceaf96f32ac6ce086d2c
+- Ehsan Abbaszadeh | approved | 2025-12-04 | 60d old | ID: 6931e9effb7e884efa37af29
+- Rick Lin | resubmit | 2025-12-04 | 60d old | ID: 69314ef796f32ac6cee7003c
+- Precog | approved | 2025-12-04 | 61d old | ID: 6930ee62fb7e884efa2f5a15
+- Giannis | resubmit | 2025-12-04 | 61d old | ID: 6930e1c296f32ac6cee4d634
+- egis.finance | resubmit | 2025-12-03 | 61d old | ID: 69307fc496f32ac6cee1cd48
+- Atlas Technology Labs, Inc. | resubmit | 2025-12-03 | 61d old | ID: 693057bcfb7e884efa29f9f2
+- Sentinel Grid / Monza Tech | submitted | 2025-11-28 | 66d old | ID: 692975fe96f32ac6ceb497de
+- Salt : Permissionless MPC Treasury Management & Asset Management | submitted | 2025-11-26 | 68d old | ID: 692764aefb7e884efaeef565
+- Sail  | approved | 2025-11-26 | 68d old | ID: 69272a6896f32ac6cea29fc8
+- LiqPass – Liquidation Insurance Protocol | resubmit | 2025-11-23 | 71d old | ID: 692302a2fb7e884efad00809
+- Senti | resubmit | 2025-11-22 | 72d old | ID: 692212b2fb7e884efacd0dfe
+- Ivory Jones | resubmit | 2025-11-21 | 73d old | ID: 6920d22696f32ac6ce7d29a8
+- CANET Technology Co., Ltd. | resubmit | 2025-11-20 | 75d old | ID: 691eada896f32ac6ce708e2a
+- DreamTeam | A Skill-Based Fantasy Cricket & Football on Arbitrum | resubmit | 2025-11-18 | 76d old | ID: 691cec2ffb7e884efab24346
+- Vadym Bondar | resubmit | 2025-11-18 | 76d old | ID: 691cb06096f32ac6ce66eeab
+- Afterchain | resubmit | 2025-11-15 | 79d old | ID: 6918ec9f96f32ac6ce5339c5
+- Liqvid | approved | 2025-11-13 | 81d old | ID: 6915b27bfb7e884efa8a13f4
+- Freddie Ng  | approved | 2025-11-13 | 82d old | ID: 691566f596f32ac6ce3dd71a
+- PackRippr | submitted | 2025-11-12 | 83d old | ID: 691411bb96f32ac6ce3286df
+- Exchequer | approved | 2025-11-12 | 83d old | ID: 6914118996f32ac6ce328658
+- Paros | approved | 2025-11-09 | 85d old | ID: 69108f81fb7e884efa68012d
+- Stimpak (Duels) | approved | 2025-11-07 | 87d old | ID: 690e7cba96f32ac6ce1560c8
+- nuvolari.ai | approved | 2025-10-26 | 99d old | ID: 68fe1c38fb7e884efaf4c8d0
+- Lampros DAO | submitted | 2025-10-17 | 108d old | ID: 68f2149496f32ac6ce6c08c4
+- Emerge Labs Corporation | approved | 2025-10-04 | 121d old | ID: 68e163c19d1640622e8c2e05
+- Blockchain Innovation Hub | submitted | 2025-10-01 | 124d old | ID: 68dda48e306fa3a0a66ee918
+- OTMO | approved | 2025-09-30 | 126d old | ID: 68db846e306fa3a0a65e4547
+- Ilya Lebedev | approved | 2025-09-26 | 129d old | ID: 68d6c5b2306fa3a0a647b6bb
+- IDconnector | submitted | 2025-08-20 | 166d old | ID: 68a63c201713f24690c17229
+- Importa Holdings Company LTD | approved | 2025-08-11 | 175d old | ID: 689a0b96d101e83abc701b5f
+- Banks | approved | 2025-08-01 | 185d old | ID: 688c90614f60d1141e91833e
+- Aegis  | approved | 2025-07-26 | 191d old | ID: 6884ec5a4f60d1141e6202d3
+- Unicorn.eth | approved | 2025-07-22 | 196d old | ID: 687f0fc54f60d1141e3379ca
+- Untangled Finance | approved | 2025-06-25 | 223d old | ID: 685b45af276fd35036314e7f
+- Peter Donaldson Rain/H20/Cyclo | approved | 2025-06-16 | 232d old | ID: 684f8aac62147ed25ec4f7d4
+- Cassandra | approved | 2025-05-21 | 257d old | ID: 682e61a7418d390e6b81a2a2
+- Urano Ecosystem | approved | 2025-05-07 | 271d old | ID: 681b9ee79ccae779611aa1c6
+- Sahabia Yakubu | approved | 2025-04-28 | 280d old | ID: 680fbd6b9ccae779619caff0
+- Daniel | cancelled | 2025-04-28 | 280d old | ID: 680f9b8f300aee1f229e0215
+- Spinach.fi | approved | 2025-04-24 | 284d old | ID: 680a05eb9ccae779615deab4
+- ChainCraft | approved | 2025-04-11 | 297d old | ID: 67f94e869dc70ba829e5f80b
+- Maldo | approved | 2025-04-07 | 301d old | ID: 67f3e4c5dcc1fa675f77fc39
+- Meetwith | approved | 2025-03-26 | 314d old | ID: 67e38b6cb0143915ab36ef2b
+
+### Rejected applications with names (3):
+- Dijkstra Keystone | rejected | 2026-01-24 | ID: 69754a9cfb7e884efaf5a3da
+- Dopot | rejected | 2026-01-23 | ID: 69734b0a96f32ac6ce9f6c87
+- DaVinci | rejected | 2026-01-23 | ID: 69730ce396f32ac6ce9d3b3d
+
+## Dev Tooling (Allocator: SeedGov)
+Grant ID: 67d802bd46da2f90cc3267b0
+Total applications: 170
+States: {"review": 14, "submitted": 17, "rejected": 102, "approved": 34, "resubmit": 3}
+Disbursed: $380,032
+Monthly: {"2025-03": 13, "2025-04": 16, "2025-05": 10, "2025-06": 9, "2025-07": 11, "2025-08": 12, "2025-09": 18, "2025-10": 11, "2025-11": 23, "2025-12": 20, "2026-01": 24, "2026-02": 3}
+
+### Notable applications (68):
+- StylusVerify | review | 2026-02-02 | 0d old | ID: 698084b096f32ac6cef3d2f7
+- Balasubramaniyan B | submitted | 2026-02-02 | 1d old | ID: 6980426afb7e884efa39e63f
+- Wizard AI | AI-Assisted Stylus IDE | submitted | 2026-01-29 | 4d old | ID: 697b9db2fb7e884efa236b35
+- Routescan | review | 2026-01-27 | 6d old | ID: 6978baabfb7e884efa0c909c
+- Dijkstra Keystone | submitted | 2026-01-26 | 7d old | ID: 69778eea96f32ac6ceb736e4
+- Tim Okonkwo | review | 2026-01-24 | 9d old | ID: 697525a3fb7e884efaf50cda
+- David Len  | submitted | 2026-01-22 | 11d old | ID: 69729035fb7e884efae5721c
+- TEN IdentiFI | review | 2026-01-21 | 12d old | ID: 6971531b96f32ac6ce8f6f4c
+- Arb402 bootstrapper | approved | 2026-01-21 | 12d old | ID: 69712064fb7e884efad948aa
+- Blobscan | review | 2026-01-19 | 14d old | ID: 696e86ba96f32ac6ce739428
+- QuidMint  | submitted | 2026-01-18 | 15d old | ID: 696d60a496f32ac6ce6857a5
+- Victor Butko with Protofire DAO | submitted | 2026-01-15 | 18d old | ID: 69693ed696f32ac6ce4d8928
+- Aseme Kifen | approved | 2026-01-14 | 19d old | ID: 69677c76fb7e884efa88af76
+- Rohan Kumar | review | 2026-01-13 | 21d old | ID: 6965e59696f32ac6ce2a6f03
+- AlphaGuardian | review | 2026-01-11 | 22d old | ID: 6963916afb7e884efa672f2b
+- Crackdevs | submitted | 2026-01-05 | 28d old | ID: 695c436afb7e884efa352a91
+- Richard Sulisthio | submitted | 2026-01-02 | 31d old | ID: 6957e30596f32ac6ceca7963
+- OnchainEmissary | approved | 2026-01-01 | 32d old | ID: 69564293fb7e884efa0dbcda
+- Paweł Wyszomirski | approved | 2025-12-31 | 33d old | ID: 69552f08fb7e884efa09de1e
+- Utkucan YILDIRIM | approved | 2025-12-25 | 39d old | ID: 694da97996f32ac6ce995cbb
+- Arbitrum Codex | approved | 2025-12-20 | 44d old | ID: 69466c3ffb7e884efac13ce5
+- Mert Köklü | review | 2025-12-15 | 49d old | ID: 69409c3f96f32ac6ce4c1f9e
+- Stylus Cache Sentinel | submitted | 2025-12-14 | 51d old | ID: 693e63bdfb7e884efa898f5d
+- Trustblock | submitted | 2025-12-14 | 51d old | ID: 693e1204fb7e884efa88a0c3
+- VeriOmnion Solutions & Research | approved | 2025-12-08 | 56d old | ID: 693759f596f32ac6ce0ce93c
+- Sherlock | submitted | 2025-12-07 | 58d old | ID: 6934f6f3fb7e884efa4a4e83
+- Felipe Manzano | submitted | 2025-12-02 | 63d old | ID: 692e4adbfb7e884efa196baf
+- Zakaria Chaikhi | resubmit | 2025-11-27 | 67d old | ID: 69286d8efb7e884efaf87619
+- Cardinal Web3 Security | submitted | 2025-11-27 | 67d old | ID: 69284f4bfb7e884efaf71ddb
+- Olympix | approved | 2025-11-26 | 69d old | ID: 69266c3696f32ac6ce9c086c
+- Charles Emmanuel | review | 2025-11-12 | 82d old | ID: 691460a296f32ac6ce34edcd
+- Almanax Inc. | approved | 2025-11-10 | 84d old | ID: 69125988fb7e884efa72485b
+- Charles Emmanuel | submitted | 2025-11-10 | 84d old | ID: 6912213c96f32ac6ce24beaf
+- Charles Emmanuel | review | 2025-11-10 | 84d old | ID: 6911e60ffb7e884efa6e7bd3
+- Octane | submitted | 2025-11-05 | 89d old | ID: 690b92b1fb7e884efa4d3a76
+- Psy Labs | review | 2025-11-02 | 92d old | ID: 6907b7ef96f32ac6cee4e29c
+- WakeUp Labs | approved | 2025-10-24 | 102d old | ID: 68fac3fe96f32ac6ce9a3522
+- Maheswaran | approved | 2025-10-20 | 105d old | ID: 68f638ebfb7e884efac8d911
+- Roman Mazur | approved | 2025-10-14 | 111d old | ID: 68ee514f96f32ac6ce5444a9
+- CoBuilders | approved | 2025-10-02 | 123d old | ID: 68de9008c7d51fa1c44f1873
+- Ng Ju Peng | approved | 2025-09-24 | 132d old | ID: 68d38714a420ff6c8409d4d5
+- Creatives Onchain  | resubmit | 2025-09-21 | 135d old | ID: 68cf725fa420ff6c84f31315
+- Invisible Garden Foundation Ltd. | approved | 2025-09-20 | 135d old | ID: 68cf23911d10099660019274
+- FOMO.tech | approved | 2025-09-19 | 136d old | ID: 68cddf5fa420ff6c84eba240
+- Sergei - co-founder of Chain.Love | approved | 2025-09-18 | 137d old | ID: 68cc6e031d10099660f3ad0d
+- CoBuilders | submitted | 2025-09-17 | 138d old | ID: 68cb169ba420ff6c84d9b3fd
+- The Indexing Co | approved | 2025-09-07 | 148d old | ID: 68bdc2872038d70201eca3d5
+- FRANK | review | 2025-08-30 | 156d old | ID: 68b323294f9e8306a6d37738
+- Bello Iteoluwakisi | review | 2025-08-29 | 158d old | ID: 68b12d9b649038e8089780f5
+- NexusSDK | submitted | 2025-07-16 | 201d old | ID: 6877cf45adac096191dc6f2b
+- Dapps over Apps | approved | 2025-07-08 | 209d old | ID: 686d005e3c1bac3fce2a3cc4
+- Trading Strategy | approved | 2025-07-02 | 215d old | ID: 6865160d3c1bac3fce02f2d9
+- HackTour India | approved | 2025-06-26 | 221d old | ID: 685d057f6b3f7fa2c447f9d4
+- Stanford Biokoro | approved | 2025-06-25 | 222d old | ID: 685c1a1b6b3f7fa2c441ac3e
+- Stylus Pre-compile Forge  | review | 2025-06-25 | 222d old | ID: 685bd20a276fd3503634d0d7
+- Euphoria | approved | 2025-06-17 | 230d old | ID: 68519379dd1bbb1acc8b3a40
+- Quotient | approved | 2025-06-14 | 234d old | ID: 684cbe5862147ed25eb5d204
+- Ahoura | approved | 2025-06-06 | 241d old | ID: 68430f0537f9dc13263a40a2
+- Scout Game / Alex Poon  | approved | 2025-05-16 | 262d old | ID: 6827a43073463c5c5378b3d8
+- Gian Alarcon | approved | 2025-04-30 | 278d old | ID: 6812a3d19ccae77961bf9dfa
+- SmartCache | approved | 2025-04-26 | 283d old | ID: 680c7392300aee1f227f113f
+- Vyper | approved | 2025-04-15 | 294d old | ID: 67fdae19255be812400387d8
+- Parthasarathy Ramanujam | approved | 2025-04-07 | 301d old | ID: 67f3d8a2dcc1fa675f770d7a
+- ArbiSight | approved | 2025-04-07 | 301d old | ID: 67f3beafdcc1fa675f7536a8
+- Mert Köklü | resubmit | 2025-04-04 | 304d old | ID: 67efa743dcc1fa675f4c5626
+- LimeChain | approved | 2025-04-01 | 307d old | ID: 67ebeff216e7410ad7a0c9f6
+- Utkucan YILDIRIM | approved | 2025-03-20 | 319d old | ID: 67dc2f4acad1cfe01e8d714d
+- Tolga Yaycı | approved | 2025-03-19 | 320d old | ID: 67daf3a067a7ee92b7b82601
+
+### Rejected applications with names (6):
+- Token Analytics | rejected | 2026-02-02 | ID: 69802ffb96f32ac6cef0e993
+- Burak Tayyip Çevik | rejected | 2026-01-22 | ID: 69722de5fb7e884efae1fd51
+- QuidMint  | rejected | 2026-01-18 | ID: 696d0255fb7e884efab2e495
+- BlockDB | rejected | 2026-01-14 | ID: 69675c8bfb7e884efa870ef6
+- Friday Johnson Etim | rejected | 2026-01-12 | ID: 69655d1596f32ac6ce2723e9
+- Applicant Name Gengfeng Liu|Role / Title Founder & Lead Architect | rejected | 2026-01-12 | ID: 6964a611fb7e884efa6c5551
+
+## Events & Community (Allocator: MaxLomu)
+Grant ID: 67d8021646da2f90cc325521
+Total applications: 287
+States: {"submitted": 17, "rejected": 228, "approved": 38, "cancelled": 4}
+Disbursed: $581,403
+Monthly: {"2025-03": 21, "2025-04": 59, "2025-05": 31, "2025-06": 17, "2025-07": 34, "2025-08": 36, "2025-09": 28, "2025-10": 21, "2025-11": 5, "2025-12": 12, "2026-01": 23}
+
+### Notable applications (59):
+- Mancer | submitted | 2026-01-30 | 4d old | ID: 697c4288fb7e884efa26c4e7
+- SafuVerse | submitted | 2026-01-29 | 4d old | ID: 697b41dbfb7e884efa1feb3a
+- Burko Enterprises Corp (MiPirata) | submitted | 2026-01-28 | 5d old | ID: 697a56c7fb7e884efa195bbc
+- Kash | submitted | 2026-01-28 | 5d old | ID: 6979d3a996f32ac6ceca02bf
+- MERGE | submitted | 2026-01-27 | 6d old | ID: 6979356c96f32ac6cec64817
+- Telugu Dao | submitted | 2026-01-27 | 6d old | ID: 69790d71fb7e884efa0fb585
+- Women In Defi  | submitted | 2026-01-26 | 7d old | ID: 6977e891fb7e884efa05b4c9
+- Mert Köklü | submitted | 2026-01-26 | 7d old | ID: 697752f896f32ac6ceb4c4fe
+- WayLearn | submitted | 2026-01-23 | 10d old | ID: 6973c4e696f32ac6cea4015a
+- Arbitrum Jump Start Program | submitted | 2026-01-22 | 11d old | ID: 6972318096f32ac6ce96ad3b
+- Claire Parkinson/ Rare Network | submitted | 2026-01-15 | 18d old | ID: 69696f63fb7e884efa9c2b27
+- Rose Pang | submitted | 2026-01-13 | 20d old | ID: 696622bdfb7e884efa7ad470
+- RnD Ventures | submitted | 2026-01-10 | 23d old | ID: 69628d62fb7e884efa627568
+- Tekrox.eth | approved | 2025-12-22 | 42d old | ID: 6949352896f32ac6ce81082d
+- Euphoria | submitted | 2025-12-11 | 54d old | ID: 693a6be296f32ac6ce25376b
+- Ethereum Lima | submitted | 2025-12-05 | 59d old | ID: 69334c56fb7e884efa42887d
+- Modular Crypto | submitted | 2025-11-27 | 67d old | ID: 6928454ffb7e884efaf6e314
+- SEEDGov | approved | 2025-10-08 | 117d old | ID: 68e6c196fb7e884efa70f5f9
+- WakeUp Labs | approved | 2025-09-29 | 127d old | ID: 68d9f4336fd5365ca25caae6
+- Ethereum Mexico | approved | 2025-09-18 | 138d old | ID: 68cb5275a420ff6c84dbb8c9
+- Fecoxa | approved | 2025-08-27 | 159d old | ID: 68af71e21713f24690f60ac9
+- GAM3S.GG | approved | 2025-08-11 | 175d old | ID: 689a03add101e83abc6fd5ba
+- Web3EduBrasil | approved | 2025-07-31 | 186d old | ID: 688ba7ff0e3d08d83d85c258
+- ETHWarsaw | approved | 2025-07-22 | 195d old | ID: 687fbc484f60d1141e3a34d8
+- Ethereum TGU | approved | 2025-07-21 | 196d old | ID: 687e70034f60d1141e2b08fe
+- Ethereum Uruguay | approved | 2025-07-17 | 200d old | ID: 68791f6c3c1bac3fce73f06b
+- Odisha DAO | approved | 2025-06-14 | 233d old | ID: 684ddc5c62147ed25ebc5c3c
+- ActualOne | submitted | 2025-06-07 | 240d old | ID: 684415ab37f9dc132643c1a1
+- Uchenna Agams Onuegbu | cancelled | 2025-06-06 | 241d old | ID: 6842edc962147ed25e619b81
+- Boring Security | approved | 2025-05-28 | 250d old | ID: 6836d4d78188d7ea517c335f
+- Cyfrin Updraft | approved | 2025-05-23 | 255d old | ID: 6830481d418d390e6b91f60d
+- Castle Labs | approved | 2025-05-22 | 256d old | ID: 682f58ff4d08d6d79ad1def7
+- Ethereum Argentina | approved | 2025-05-16 | 263d old | ID: 68269f8473463c5c536ba5b3
+- Dev3pack | approved | 2025-05-16 | 263d old | ID: 682684ad913e9b0f9ef8d410
+- ETHMilan | approved | 2025-04-29 | 279d old | ID: 68109e219ccae77961a769e9
+- Ethereum Bolivia | approved | 2025-04-28 | 280d old | ID: 680fd2e3300aee1f22a0d10f
+- ETH Cinco de Mayo | approved | 2025-04-25 | 283d old | ID: 680bbfc39ccae77961770339
+- Khue Le | approved | 2025-04-21 | 287d old | ID: 68061ea79ccae779611ad193
+- Farstar | approved | 2025-04-15 | 293d old | ID: 67fe9443255be81240160d54
+- NERDCONF | approved | 2025-04-15 | 293d old | ID: 67fe8c40a29ebddab103c1ba
+- urbe.eth | approved | 2025-04-13 | 295d old | ID: 67fbec0f255be81240e84bd8
+- urbe.eth | approved | 2025-04-13 | 295d old | ID: 67fbded6a29ebddab1d5ac70
+- Modular Crypto | approved | 2025-04-11 | 297d old | ID: 67f9502690157fe031c59aa0
+- ETH Latam | approved | 2025-04-10 | 298d old | ID: 67f79dd090157fe031ab0d44
+- Shem | cancelled | 2025-04-05 | 303d old | ID: 67f0f98d16e7410ad7df2698
+- Nandana Setty | approved | 2025-04-05 | 304d old | ID: 67f0db7edcc1fa675f594c69
+- Quotient  | approved | 2025-04-05 | 304d old | ID: 67f08ab3dcc1fa675f56e6fd
+- Ethereum Volcano | approved | 2025-04-04 | 304d old | ID: 67f065ad16e7410ad7dab23e
+- Gimer Cervera (DappDojo) | approved | 2025-04-03 | 305d old | ID: 67eef861dcc1fa675f44dcbb
+- Arbtrum Pulse | cancelled | 2025-04-03 | 305d old | ID: 67eec31edcc1fa675f4221b8
+- Web3bridge | approved | 2025-04-01 | 307d old | ID: 67ec235edcc1fa675f1f4fca
+- Narbeh Shahnazarian | approved | 2025-04-01 | 308d old | ID: 67eb393edcc1fa675f1246f8
+- Davinci | approved | 2025-03-28 | 311d old | ID: 67e6a57416e7410ad76b9d7e
+- web3 Warri | approved | 2025-03-27 | 312d old | ID: 67e55691dcc1fa675fd68ffe
+- Arbitrum Growth in Canada | cancelled | 2025-03-25 | 315d old | ID: 67e1f5d6cad1cfe01ed98d89
+- RnDAO | approved | 2025-03-24 | 315d old | ID: 67e1ad1567a7ee92b7197d53
+- Chaal Pritam | approved | 2025-03-23 | 317d old | ID: 67dfb1bccad1cfe01ebc153e
+- Ethereum Argentina | approved | 2025-03-21 | 318d old | ID: 67dd7111cad1cfe01ea527f2
+- Tolga Yaycı | approved | 2025-03-20 | 319d old | ID: 67dc2a13cad1cfe01e8d48c4
+
+### Rejected applications with names (7):
+- Netmon | rejected | 2026-01-23 | ID: 6972e3b096f32ac6ce9c2e85
+- TRITEMIUS | rejected | 2026-01-15 | ID: 696919ba96f32ac6ce4bf930
+- MANCER | rejected | 2026-01-15 | ID: 69687cd096f32ac6ce4530fe
+- Raphael Pitol Pereira And Jota Dinali | rejected | 2026-01-14 | ID: 6967eaaf96f32ac6ce417f79
+- Web3 Digest | rejected | 2026-01-12 | ID: 6964c514fb7e884efa6d9b07
+- Snigdho Dev Labs | rejected | 2026-01-10 | ID: 6962721e96f32ac6ce145a7d
+- Arbitrum Community Educator Program | rejected | 2026-01-09 | ID: 69616f7496f32ac6ce0ed905
+
+## Gaming (Allocator: Flook)
+Grant ID: 67d8033d46da2f90cc326ac9
+Total applications: 160
+States: {"submitted": 84, "approved": 34, "review": 30, "cancelled": 1, "rejected": 10, "resubmit": 1}
+Disbursed: $618,248
+Monthly: {"2025-03": 19, "2025-04": 37, "2025-05": 25, "2025-06": 17, "2025-07": 14, "2025-08": 14, "2025-09": 5, "2025-10": 5, "2025-11": 13, "2025-12": 5, "2026-01": 4, "2026-02": 2}
+
+### Notable applications (150):
+- AGDAO | submitted | 2026-02-02 | 0d old | ID: 6981068596f32ac6cef9994c
+- W3Gamer | submitted | 2026-02-01 | 1d old | ID: 697f8207fb7e884efa36c64b
+- Vinyl Productions | submitted | 2026-01-28 | 5d old | ID: 697a201c96f32ac6cecc576c
+- iCrazyTeddy | submitted | 2026-01-15 | 18d old | ID: 69695df096f32ac6ce4e8eb6
+- THRYL by Glazer Games | submitted | 2026-01-14 | 19d old | ID: 6967a4d796f32ac6ce3e6d69
+- Signgamers  | submitted | 2026-01-08 | 26d old | ID: 695f48ea96f32ac6cefdc6a4
+- Kesler - Arbitrum Gaming | submitted | 2025-12-31 | 33d old | ID: 6955043996f32ac6cebc0970
+- OLA Guild Games | submitted | 2025-12-16 | 48d old | ID: 69418d8dfb7e884efa9fb895
+- Israel Lazo | submitted | 2025-12-14 | 50d old | ID: 693ef9f7fb7e884efa8c7af7
+- EL REA | submitted | 2025-12-11 | 54d old | ID: 693a0f2bfb7e884efa6ef8cb
+- WhiteDuke | submitted | 2025-12-01 | 63d old | ID: 692db0c8fb7e884efa140581
+- sogol malek | submitted | 2025-11-30 | 65d old | ID: 692bfddb96f32ac6cec11f7f
+- TempestLabs | approved | 2025-11-30 | 65d old | ID: 692be0ab96f32ac6cec0d1b9
+- Metarealm (Lunaris Esports) | submitted | 2025-11-30 | 65d old | ID: 692b956b96f32ac6cebfd213
+- Lunaris Esports | submitted | 2025-11-21 | 73d old | ID: 6920d8effb7e884efac74049
+- Afro Play | submitted | 2025-11-21 | 73d old | ID: 69208326fb7e884efac4de9b
+- Arbiplay | submitted | 2025-11-20 | 75d old | ID: 691eac21fb7e884efaba7dc9
+- Zodiacs Gaming | submitted | 2025-11-17 | 77d old | ID: 691b0ec4fb7e884efaa6d01a
+- The CatalystOG LLC | submitted | 2025-11-17 | 78d old | ID: 691a667b96f32ac6ce596408
+- DePropFirm | submitted | 2025-11-12 | 82d old | ID: 691484ddfb7e884efa80bb49
+- Frostbyte | submitted | 2025-11-10 | 85d old | ID: 691170cdfb7e884efa6baea7
+- Wayfinders | approved | 2025-11-08 | 87d old | ID: 690ea42afb7e884efa60e7ce
+- Forkast | approved | 2025-11-04 | 91d old | ID: 69095e79fb7e884efa3bdeae
+- Sky_Gam3s | submitted | 2025-11-01 | 93d old | ID: 6906935cfb7e884efa2ae609
+- WolvesDAO | approved | 2025-10-29 | 96d old | ID: 69025568fb7e884efa124794
+- Primos | submitted | 2025-10-22 | 103d old | ID: 68f8d73196f32ac6ce8f549c
+- Jaz "General2na" Comoda and G3 Productions | submitted | 2025-10-13 | 112d old | ID: 68ed079f96f32ac6ce4b4ac5
+- Market Melee | submitted | 2025-10-09 | 117d old | ID: 68e7371296f32ac6ce29dece
+- Shadow King | submitted | 2025-10-05 | 120d old | ID: 68e2e20e9d1640622e995df8
+- Tingz | submitted | 2025-09-23 | 132d old | ID: 68d29ab5a420ff6c84041091
+- SwaptorX | submitted | 2025-09-21 | 135d old | ID: 68cf8315a420ff6c84f33a60
+- SFY Labs | submitted | 2025-09-20 | 135d old | ID: 68ce691aa420ff6c84ede274
+- Predz - Old School Club | submitted | 2025-09-17 | 139d old | ID: 68c9fe7d1d10099660df9171
+- Hyve Labs | approved | 2025-09-07 | 149d old | ID: 68bcfa064f9e8306a609973d
+- CAPTAINSIDE | submitted | 2025-08-30 | 156d old | ID: 68b3325d2038d70201b2ee7c
+- Sura Gaming | submitted | 2025-08-27 | 159d old | ID: 68af5812649038e8088a703e
+- CodeRigi.co | submitted | 2025-08-27 | 159d old | ID: 68af20c51713f24690f34244
+- TomFM | approved | 2025-08-27 | 159d old | ID: 68aee2af1713f24690f1ae4f
+- Cagyjan | approved | 2025-08-21 | 165d old | ID: 68a78272649038e808603295
+- Triumph Games Studio | approved | 2025-08-18 | 168d old | ID: 68a35e0b649038e808429d4e
+- Febatista | submitted | 2025-08-14 | 172d old | ID: 689e3e181713f24690910e92
+- Syl | submitted | 2025-08-14 | 172d old | ID: 689e138aaad61b2990325e6d
+- kyrohontwitter | approved | 2025-08-13 | 173d old | ID: 689cd188d101e83abc868412
+- Svetlana Oleynik | submitted | 2025-08-07 | 179d old | ID: 68950fecd101e83abc55937d
+- Hype Unit | submitted | 2025-08-07 | 180d old | ID: 6893f174d101e83abc4c58fd
+- 3C Gaming | submitted | 2025-08-06 | 180d old | ID: 689371ebd101e83abc480e4e
+- Patchara | submitted | 2025-08-05 | 181d old | ID: 6891eeda4f60d1141eb7242c
+- Glazer Games  | submitted | 2025-08-04 | 182d old | ID: 6890a05a4f60d1141eaa4473
+- Apex Hub  | submitted | 2025-07-29 | 189d old | ID: 688844090e3d08d83d6d4fa9
+- Spot Zero x Arbitrum – Strengthening Arbitrum’s Gaming Layer with Narrative IP | submitted | 2025-07-29 | 189d old | ID: 68883d080e3d08d83d6d236b
+- BharatGG | submitted | 2025-07-23 | 194d old | ID: 6880d4fa0e3d08d83d3a56b8
+- GAM3S.GG | approved | 2025-07-22 | 195d old | ID: 688025250e3d08d83d36c693
+- Paul Taylor | submitted | 2025-07-21 | 196d old | ID: 687e425d4f60d1141e28d99c
+- New Game+ | submitted | 2025-07-18 | 199d old | ID: 687abdf53c1bac3fce7e9486
+- TheSpawn | submitted | 2025-07-18 | 199d old | ID: 687a50a53c1bac3fce7b5580
+- GamingGrid | submitted | 2025-07-18 | 199d old | ID: 687a228fadac096191ed89ad
+- icepop | approved | 2025-07-17 | 201d old | ID: 68783f99adac096191dfc5ab
+- FITCHIN Universe | submitted | 2025-07-16 | 201d old | ID: 68781a0fadac096191dec696
+- Dip Karmakar | submitted | 2025-07-13 | 204d old | ID: 68741df8adac096191c60ee2
+- MetaRealm | submitted | 2025-07-11 | 206d old | ID: 68713facadac096191bb83b1
+- CFA | submitted | 2025-07-11 | 207d old | ID: 687090903c1bac3fce4301bc
+- Jesus Martinez/Legion | submitted | 2025-07-11 | 207d old | ID: 687056a4adac096191b5eb30
+- Real Chain Media Group - ARB RADIO | submitted | 2025-06-30 | 217d old | ID: 6862fc58adac096191684e49
+- Maurycy Konopacki | submitted | 2025-06-28 | 219d old | ID: 68602cad276fd35036522132
+- Brandon Darby "MLGAnakin" | submitted | 2025-06-25 | 222d old | ID: 685c89cb6b3f7fa2c445a1f4
+- Inspector Mindblow & Tokenize360 Gaming Guild | submitted | 2025-06-25 | 222d old | ID: 685c15c06b3f7fa2c44168be
+- Gameverse Africa | submitted | 2025-06-21 | 226d old | ID: 6856d45f6b3f7fa2c41cc011
+- 3C Gaming | submitted | 2025-06-20 | 227d old | ID: 6855f1756b3f7fa2c418c848
+- iCrazyTeddy | approved | 2025-06-19 | 228d old | ID: 685402fddd1bbb1acc9bd03d
+- Terrence Ellis /Lumen Architects /Builders of SpaceDust | review | 2025-06-16 | 231d old | ID: 6850655e37f9dc1326a3bf93
+- Big Daddy | review | 2025-06-15 | 232d old | ID: 684ebcca62147ed25ec0e447
+- Brey | submitted | 2025-06-14 | 233d old | ID: 684d997462147ed25eba8ddc
+- MAYG by Peeking Duck Studios Ltd | review | 2025-06-13 | 234d old | ID: 684c151162147ed25eb15d92
+- CONSO | review | 2025-06-13 | 234d old | ID: 684bf61c62147ed25eb034db
+- Drake Branly | submitted | 2025-06-13 | 235d old | ID: 684bd8cc62147ed25eaf4316
+- Jason Fleurant | approved | 2025-06-11 | 237d old | ID: 6848f50562147ed25e9751e1
+- Cristian Villalobos | approved | 2025-06-09 | 238d old | ID: 6846a05662147ed25e7f3a78
+- No Limit Games | submitted | 2025-06-08 | 240d old | ID: 6844f96d62147ed25e7353b5
+- AndySlaps | submitted | 2025-06-04 | 244d old | ID: 683fd5fb62147ed25e44ab18
+- 1v5 Studios / TALON Esports | approved | 2025-05-28 | 250d old | ID: 68372992fcb875fb6681e5d1
+- EL REA | approved | 2025-05-28 | 250d old | ID: 6836daa6fcb875fb667a6c55
+- Not Corrupt Media | submitted | 2025-05-28 | 251d old | ID: 6836c3effcb875fb66789966
+- Arbitrum Bites | submitted | 2025-05-27 | 252d old | ID: 68356022fcb875fb6665f3e6
+- Play3 | submitted | 2025-05-27 | 252d old | ID: 683526b8fcb875fb6661f779
+- GamingGrid | submitted | 2025-05-26 | 252d old | ID: 68342f980605ff4ac61a8236
+- DexStudios | submitted | 2025-05-15 | 263d old | ID: 6825d0fcb30d058391175d4d
+- Leon Abboud | cancelled | 2025-05-14 | 265d old | ID: 6824282c300aee1f22733dd4
+- Hype Unit  | review | 2025-05-13 | 265d old | ID: 6823adba9ccae779616cbd34
+- Yaser Mohammadi | submitted | 2025-05-12 | 266d old | ID: 682286d59ccae779615e5236
+- AndySlaps | submitted | 2025-05-10 | 268d old | ID: 681fc234300aee1f22486a9b
+- IGNIXION STUDIO | submitted | 2025-05-10 | 268d old | ID: 681f6e799ccae7796142a132
+- Arual3x | submitted | 2025-05-08 | 270d old | ID: 681d1f099ccae779612a4dad
+- Based Arabian Guild (BAG) | submitted | 2025-05-08 | 270d old | ID: 681caff3300aee1f22283642
+- NexusLabsGG | submitted | 2025-05-08 | 270d old | ID: 681c7dd09ccae77961237e4f
+- Crypto Grit | submitted | 2025-05-07 | 271d old | ID: 681bd9969ccae779611d51ca
+- Upptic | approved | 2025-05-07 | 271d old | ID: 681bb7f89ccae779611c4089
+- My Pet Hooligan/AMGI Studios | review | 2025-05-06 | 272d old | ID: 681a824d300aee1f22111c07
+- PlayToEarn  | review | 2025-05-06 | 272d old | ID: 681a2c369ccae7796109ff52
+- BeraBucks | review | 2025-05-06 | 272d old | ID: 681a259c300aee1f220c79d7
+- Ukin | review | 2025-05-06 | 272d old | ID: 6819e7889ccae7796105fa04
+- Kyle Freedman | approved | 2025-05-04 | 274d old | ID: 6817b3969ccae77961ed4674
+- SMOK3 - Nicholas H | approved | 2025-05-04 | 274d old | ID: 6817a90f9ccae77961ecb0ea
+- Carlos “Predz0rX” Salazar | submitted | 2025-05-03 | 275d old | ID: 681693de9ccae77961e4194b
+- Mepo | submitted | 2025-05-02 | 277d old | ID: 68144bb1300aee1f22d07fcd
+- RVNC | review | 2025-04-29 | 279d old | ID: 6810cf5d9ccae77961aa9466
+- Oxygen Esports & Boston Breach | review | 2025-04-28 | 280d old | ID: 680f9d289ccae779619b3ab4
+- dexStudios | review | 2025-04-24 | 284d old | ID: 680a0a8e9ccae779615e38b7
+- Luca Conti - MinhArte | review | 2025-04-22 | 286d old | ID: 680800569ccae7796140a002
+- Revv.gg | approved | 2025-04-19 | 290d old | ID: 68031242300aee1f22fd9963
+- ToxiC55 | review | 2025-04-14 | 294d old | ID: 67fd6cbaa29ebddab1ed9a3c
+-  TR4 Gaming Grant | submitted | 2025-04-14 | 294d old | ID: 67fd1400a29ebddab1e4cbb3
+- Lombrados | review | 2025-04-14 | 295d old | ID: 67fcabbca29ebddab1dca2cf
+- abbyaims | review | 2025-04-12 | 296d old | ID: 67faf74036f3abdcabd0dc3e
+- Fraternidadecrypto | review | 2025-04-11 | 297d old | ID: 67f95cf690157fe031c677ff
+- Digitstak | submitted | 2025-04-11 | 298d old | ID: 67f85f9f90157fe031b578ba
+- MokoDAO | review | 2025-04-10 | 298d old | ID: 67f83d549dc70ba829d598eb
+- Eduardo Hochmann | review | 2025-04-10 | 298d old | ID: 67f81ee59dc70ba829d48d3a
+- Kyle Salazar | approved | 2025-04-10 | 299d old | ID: 67f73bd490157fe031a4d638
+- Mana Gaming | review | 2025-04-10 | 299d old | ID: 67f718af90157fe031a41068
+- Pavelski | approved | 2025-04-10 | 299d old | ID: 67f7143e9dc70ba829c43666
+- ShadedTalent | review | 2025-04-09 | 299d old | ID: 67f6fb469dc70ba829c32763
+- Goatfather | review | 2025-04-09 | 299d old | ID: 67f64f14dcc1fa675f9900f6
+- AGDAO  | approved | 2025-04-08 | 300d old | ID: 67f58c2316e7410ad7141dae
+- Fatal | approved | 2025-04-08 | 300d old | ID: 67f5897416e7410ad714024e
+- Socials Rising | review | 2025-04-08 | 300d old | ID: 67f5495016e7410ad70fa020
+- Seroy - Hadron Web3 | submitted | 2025-04-08 | 301d old | ID: 67f4cfb6dcc1fa675f836bdc
+- Felipe Magrini | submitted | 2025-04-07 | 301d old | ID: 67f44f1adcc1fa675f7dbdb8
+- AllRichard | review | 2025-04-07 | 301d old | ID: 67f43ff7dcc1fa675f7d1423
+- MessiasCM | review | 2025-04-07 | 301d old | ID: 67f4033716e7410ad7ff5b69
+- MetaRealm | submitted | 2025-04-06 | 302d old | ID: 67f2ad4f16e7410ad7efba7d
+- Nickytha and N7 | submitted | 2025-04-05 | 303d old | ID: 67f0f77116e7410ad7df1283
+- VastGG | review | 2025-04-03 | 306d old | ID: 67edd9fb16e7410ad7bbdab9
+- Matheus Celtic | approved | 2025-04-01 | 307d old | ID: 67ec0e3a16e7410ad7a3247c
+- Tempest Gaming Guild | approved | 2025-04-01 | 307d old | ID: 67ec0aec16e7410ad7a2cd73
+- shelley mae | submitted | 2025-04-01 | 308d old | ID: 67eb5994dcc1fa675f1341a7
+- Dignitas | submitted | 2025-04-01 | 308d old | ID: 67eb3d0cdcc1fa675f126039
+- Jaz "General2na" Comoda | review | 2025-03-30 | 309d old | ID: 67e99168dcc1fa675ffe1d2e
+- iCrazyTeddy | resubmit | 2025-03-28 | 312d old | ID: 67e61c0716e7410ad7660706
+- Turgood | review | 2025-03-27 | 312d old | ID: 67e5aa2f16e7410ad7625444
+- BABYBAY | approved | 2025-03-27 | 313d old | ID: 67e4c7ed16e7410ad7558b99
+- Upptic | review | 2025-03-26 | 314d old | ID: 67e3553bcad1cfe01eede484
+- Antonio Sco | review | 2025-03-25 | 314d old | ID: 67e3014bcad1cfe01ee94a49
+- Wayfinders | approved | 2025-03-25 | 314d old | ID: 67e2c8c967a7ee92b7291375
+- OLA GG | approved | 2025-03-25 | 315d old | ID: 67e2444767a7ee92b720a5ff
+- SOLTEK | approved | 2025-03-25 | 315d old | ID: 67e21fbccad1cfe01edaad1a
+- Zodiacs Gaming | submitted | 2025-03-22 | 317d old | ID: 67dea93567a7ee92b7f72b55
+- NIKKI TRAN ARB GAMING | approved | 2025-03-21 | 318d old | ID: 67ddeffecad1cfe01eaac716
+- GAM3S.GG | approved | 2025-03-21 | 319d old | ID: 67dce45767a7ee92b7dc8c83
+- Real Agency | approved | 2025-03-20 | 319d old | ID: 67dc5ce267a7ee92b7d3f203
+- Swamp Gaming | approved | 2025-03-20 | 320d old | ID: 67db886167a7ee92b7c33050
+
+## Orbit (Allocator: Juandi)
+Grant ID: 67d805737397096a7269962e
+Total applications: 50
+States: {"rejected": 35, "submitted": 1, "review": 6, "approved": 7, "cancelled": 1}
+Disbursed: $129,000
+Monthly: {"2025-03": 4, "2025-04": 5, "2025-05": 4, "2025-06": 2, "2025-07": 5, "2025-08": 2, "2025-09": 3, "2025-10": 8, "2025-11": 5, "2025-12": 8, "2026-01": 4}
+
+### Notable applications (15):
+- North Investments | submitted | 2026-01-18 | 15d old | ID: 696d5249fb7e884efab494a2
+- Covantra | review | 2026-01-14 | 20d old | ID: 69672cb6fb7e884efa85b551
+- Greenpill Dev Guild | approved | 2025-12-31 | 34d old | ID: 69548dd396f32ac6ceb9cd33
+- KLIQ | review | 2025-12-10 | 54d old | ID: 6939de23fb7e884efa6dc259
+- PagCrypto | review | 2025-11-25 | 69d old | ID: 69263dd796f32ac6ce9b07ac
+- ZoopX | review | 2025-11-24 | 71d old | ID: 6923cc2a96f32ac6ce89524d
+- Lend | review | 2025-11-04 | 90d old | ID: 690a857196f32ac6cefa9a96
+- Fist Commerce | review | 2025-10-27 | 99d old | ID: 68fef66396f32ac6ceadbc13
+- Corentin Cadieu | approved | 2025-10-15 | 110d old | ID: 68effc2996f32ac6ce5fbbb7
+- Espresso Systems | approved | 2025-08-25 | 161d old | ID: 68acc1761713f24690e4e68d
+- Harishkarthik Gunalan | cancelled | 2025-08-12 | 175d old | ID: 689acc9753eb5b39f8ceadb3
+- Petar Atanasovski | approved | 2025-07-24 | 193d old | ID: 6882110e4f60d1141e4b8944
+- Yurii Kovalchuk | approved | 2025-05-27 | 251d old | ID: 6835a9eefcb875fb666b3a49
+- Modern Society Labs | approved | 2025-04-08 | 300d old | ID: 67f55aba16e7410ad71111c2
+- Mert Köklü | approved | 2025-03-20 | 319d old | ID: 67dc888867a7ee92b7d6174b
+
+### Rejected applications with names (11):
+- Amiya Behera | rejected | 2026-01-27 | ID: 697858bd96f32ac6cebdc70a
+- K Sumanth | rejected | 2026-01-07 | ID: 695e76b796f32ac6cef768f0
+- Ignacio Carrasco | rejected | 2025-12-29 | ID: 6952f985fb7e884efafc874b
+- microapp.credit | rejected | 2025-12-17 | ID: 6942989296f32ac6ce5aac65
+- RefractionDAO / IRL | rejected | 2025-12-16 | ID: 6941afd896f32ac6ce54aa25
+- Diode | rejected | 2025-12-15 | ID: 69408f5396f32ac6ce4ba546
+- Timilehin olowu | rejected | 2025-12-15 | ID: 69401233fb7e884efa9339b5
+- Quintes Protocol | rejected | 2025-12-02 | ID: 692f5cdafb7e884efa223f1b
+- sogol malek | rejected | 2025-11-30 | ID: 692bfdb0fb7e884efa0aaa9f
+- Build Union  | rejected | 2025-11-17 | ID: 691ba69cfb7e884efaaafa78
+- Green Protocol | rejected | 2025-10-28 | ID: 6900647afb7e884efa024ecd
+
+## Program Totals
+Total applications: 1069
+Total approved: 139
+Total disbursed: $1,902,283
+Program timeline: March 2025 - March 2026
+Grant range: $25,000 - $50,000 USDC
+Domains: NPI (Castle Labs), Dev Tooling (SeedGov), Events (MaxLomu), Gaming (Flook), Orbit (Juandi)
