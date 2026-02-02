@@ -473,157 +473,6 @@
             cursor: not-allowed;
         }
 
-        .chat-button {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            background: #28a0f0;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            transition: all 0.2s;
-            z-index: 1000;
-        }
-
-        .chat-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.5);
-        }
-
-        .chat-panel {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 400px;
-            height: 600px;
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-            display: none;
-            flex-direction: column;
-            z-index: 1001;
-        }
-
-        .chat-panel.open {
-            display: flex;
-        }
-
-        .chat-header {
-            padding: 16px;
-            border-bottom: 1px solid #30363d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-header h3 {
-            font-size: 1.1rem;
-            color: #28a0f0;
-        }
-
-        .chat-close {
-            background: none;
-            border: none;
-            color: #8b949e;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .chat-message {
-            padding: 10px 14px;
-            border-radius: 8px;
-            max-width: 85%;
-        }
-
-        .chat-message.user {
-            background: rgba(40, 160, 240, 0.2);
-            align-self: flex-end;
-        }
-
-        .chat-message.assistant {
-            background: #0d1117;
-            align-self: flex-start;
-        }
-
-        .chat-message.system {
-            background: rgba(210, 153, 34, 0.2);
-            align-self: center;
-            font-size: 0.85rem;
-            color: #d29922;
-            text-align: center;
-        }
-
-        .chat-input-container {
-            padding: 16px;
-            border-top: 1px solid #30363d;
-            display: flex;
-            gap: 8px;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 10px 12px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #e6edf3;
-            font-size: 0.95rem;
-        }
-
-        .chat-send {
-            padding: 10px 16px;
-            background: #28a0f0;
-            border: none;
-            border-radius: 6px;
-            color: #fff;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .chat-send:hover {
-            background: #1f8cd8;
-        }
-
-        .chat-send:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .typing-indicator {
-            display: none;
-            align-self: flex-start;
-            padding: 10px 14px;
-            background: #0d1117;
-            border-radius: 8px;
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-
-        .typing-indicator.active {
-            display: block;
-        }
-
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -783,13 +632,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .chat-panel {
-                width: calc(100vw - 32px);
-                height: calc(100vh - 100px);
-                right: 16px;
-                bottom: 80px;
-            }
-
             table {
                 font-size: 0.85rem;
             }
@@ -915,43 +757,6 @@
         </footer>
     </div>
 
-    <!-- Chat Button -->
-    <button class="chat-button" id="chatButton">💬</button>
-
-    <!-- Chat Panel -->
-    <div class="chat-panel" id="chatPanel">
-        <div class="chat-header">
-            <h3>Grant Data Assistant</h3>
-            <button class="chat-close" id="chatClose">×</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="chat-message system">
-                Ask about the grant data. Chat is scoped to your selected reporting period.
-            </div>
-        </div>
-        <div class="typing-indicator" id="typingIndicator">Assistant is typing...</div>
-        <div class="chat-input-container" id="chatAuthContainer" style="display:none;">
-            <input type="password" class="chat-input" id="chatPasswordInput" placeholder="Enter chat password...">
-            <button class="chat-send" id="chatAuthBtn">Unlock</button>
-        </div>
-        <div class="chat-input-container" id="chatInputContainer">
-            <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question...">
-            <button class="chat-send" id="chatSend">Send</button>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="modal-close" id="modalClose">×</button>
-                <div class="modal-title" id="modalTitle"></div>
-                <div class="modal-subtitle" id="modalSubtitle"></div>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    </div>
-
     <script>
         // Global state
         let data = null;
@@ -973,8 +778,7 @@
             endDate: null
         };
 
-        // Chat state
-        let chatHistory = [];
+        // State
 
         // Load data
         async function loadData() {
@@ -1699,124 +1503,6 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Chat
-        document.getElementById('chatButton').addEventListener('click', () => {
-            const panel = document.getElementById('chatPanel');
-            const wasOpen = panel.classList.contains('open');
-            panel.classList.toggle('open');
-            if (!wasOpen) initChatAuth();
-        });
-        
-        document.getElementById('chatClose').addEventListener('click', () => {
-            document.getElementById('chatPanel').classList.remove('open');
-        });
-        
-        // Chat auth
-        function getChatToken() { return localStorage.getItem('chat_token') || ''; }
-        function setChatToken(t) { localStorage.setItem('chat_token', t); }
-        function clearChatToken() { localStorage.removeItem('chat_token'); }
-
-        function showChatAuth() {
-            document.getElementById('chatAuthContainer').style.display = 'flex';
-            document.getElementById('chatInputContainer').style.display = 'none';
-            document.getElementById('chatPasswordInput').value = '';
-            document.getElementById('chatPasswordInput').focus();
-        }
-        function showChatInput() {
-            document.getElementById('chatAuthContainer').style.display = 'none';
-            document.getElementById('chatInputContainer').style.display = 'flex';
-            document.getElementById('chatInput').focus();
-        }
-
-        function initChatAuth() {
-            if (getChatToken()) showChatInput();
-            else showChatAuth();
-        }
-
-        document.getElementById('chatAuthBtn').addEventListener('click', () => {
-            const pw = document.getElementById('chatPasswordInput').value.trim();
-            if (pw) { setChatToken(pw); showChatInput(); }
-        });
-        document.getElementById('chatPasswordInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const pw = document.getElementById('chatPasswordInput').value.trim();
-                if (pw) { setChatToken(pw); showChatInput(); }
-            }
-        });
-
-        async function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
-            
-            const messagesDiv = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'chat-message user';
-            userMsg.textContent = message;
-            messagesDiv.appendChild(userMsg);
-            
-            input.value = '';
-            input.disabled = true;
-            document.getElementById('chatSend').disabled = true;
-            document.getElementById('typingIndicator').classList.add('active');
-            
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + getChatToken()
-                    },
-                    body: JSON.stringify({
-                        message,
-                        history: chatHistory,
-                        periodStart: filters.startDate.toISOString(),
-                        periodEnd: filters.endDate.toISOString()
-                    })
-                });
-                
-                if (response.status === 401) {
-                    clearChatToken();
-                    const errMsg = document.createElement('div');
-                    errMsg.className = 'chat-message system';
-                    errMsg.textContent = 'Invalid password. Please re-enter.';
-                    messagesDiv.appendChild(errMsg);
-                    showChatAuth();
-                    return;
-                }
-                
-                const data = await response.json();
-                
-                const assistantMsg = document.createElement('div');
-                assistantMsg.className = 'chat-message assistant';
-                assistantMsg.textContent = data.reply || data.response || 'No response';
-                messagesDiv.appendChild(assistantMsg);
-                
-                chatHistory.push(
-                    { role: 'user', content: message },
-                    { role: 'assistant', content: data.reply || data.response || '' }
-                );
-                
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            } catch (error) {
-                console.error('Chat error:', error);
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'chat-message system';
-                errorMsg.textContent = 'Error: Could not reach chat service';
-                messagesDiv.appendChild(errorMsg);
-            } finally {
-                input.disabled = false;
-                document.getElementById('chatSend').disabled = false;
-                document.getElementById('typingIndicator').classList.remove('active');
-            }
-        }
-        
-        document.getElementById('chatSend').addEventListener('click', sendMessage);
-        document.getElementById('chatInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
 
         // Initialize
         loadData();
